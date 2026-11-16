@@ -1,0 +1,59 @@
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, Inter } from "next/font/google";
+import "./globals.css";
+import Providers from "@/components/Providers";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import StickyBar from "@/components/StickyBar";
+import { SITE } from "@/lib/config";
+
+const serif = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const sans = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: "MYLOFT STUDIO | Fotostudio & Eventlocation in Oberursel bei Frankfurt",
+    template: "%s | MYLOFT STUDIO",
+  },
+  description:
+    "Dein Studio in Frankfurt für Shootings, Content und Events. Zwei Etagen, Profi-Equipment inklusive. Ab 190 €. 5,0 ★ bei Google, täglich 7–24 Uhr.",
+  openGraph: {
+    title: "MYLOFT STUDIO | Dein Studio. Deine Story.",
+    description: "Fotostudio & Eventlocation in Oberursel bei Frankfurt. Zwei Etagen, Profi-Equipment inklusive.",
+    type: "website",
+    locale: "de_DE",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#fbfaf7",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="de" className={`${serif.variable} ${sans.variable}`}>
+      <body>
+        <Providers>
+          <Header />
+          <main className="min-h-screen pb-24 md:pb-0">{children}</main>
+          <Footer />
+          <StickyBar />
+        </Providers>
+      </body>
+    </html>
+  );
+}
