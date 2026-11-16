@@ -25,7 +25,7 @@ export const IMG = {
   realPet: { id: "/studio/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
   realBW: { id: "/studio/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
   realSport: { id: "/studio/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
-  realCreator: { id: "/studio/creator-gimbal.jpg", alt: "Content Creator mit Kamera-Gimbal" },
+  realCreator: { id: "/studio/creator-gimbal.jpg", alt: "Mete, Inhaber von MYLOFT STUDIO, mit Kamera-Gimbal" },
   realWorkshop: { id: "/studio/masterclass-gruppe.jpg", alt: "Gruppenfoto bei der Make-up-Masterclass im Studio" },
   realChairs: { id: "/studio/chiavari-stuehle.jpg", alt: "Weiße Chiavari-Stühle an gedeckter Tafel beim Workshop" },
 

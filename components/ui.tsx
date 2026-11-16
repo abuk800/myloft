@@ -12,11 +12,11 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Bild mit festem Seitenverhältnis-Container (Eltern muss relative + Größe haben). */
 export function Photo({
-  k, sizes = "100vw", priority = false, className = "", w = 1600,
-}: { k: ImgKey; sizes?: string; priority?: boolean; className?: string; w?: number }) {
+  k, sizes = "100vw", priority = false, className = "", w = 1600, pos,
+}: { k: ImgKey; sizes?: string; priority?: boolean; className?: string; w?: number; pos?: string }) {
   const img = IMG[k];
   return (
-    <Image src={src(img, w)} alt={img.alt} fill sizes={sizes} priority={priority} className={`object-cover ${className}`} />
+    <Image src={src(img, w)} alt={img.alt} fill sizes={sizes} priority={priority} quality={85} style={pos ? { objectPosition: pos } : undefined} className={`object-cover ${className}`} />
   );
 }
 

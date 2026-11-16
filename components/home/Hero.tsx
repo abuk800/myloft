@@ -7,7 +7,12 @@ import { Photo, Lines, EASE, Stars } from "../ui";
 import { SITE } from "@/lib/config";
 import type { ImgKey } from "@/lib/images";
 
-const SLIDES: ImgKey[] = ["sofaLounge", "stairsWhite", "studioCyc", "tableWhite"];
+const SLIDES: { k: ImgKey; pos?: string }[] = [
+  { k: "realStairs", pos: "50% 38%" },
+  { k: "sofaLounge" },
+  { k: "realSofa", pos: "50% 42%" },
+  { k: "tableWhite" },
+];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -34,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 1.6, ease: "easeInOut" }}
           >
             <div data-kenburns className="absolute inset-0" style={{ animation: "kenburns 9s ease-out forwards" }}>
-              <Photo k={SLIDES[i]} priority={i === 0} sizes="100vw" w={2000} />
+              <Photo k={SLIDES[i].k} pos={SLIDES[i].pos} priority={i === 0} sizes="100vw" w={2000} />
             </div>
           </motion.div>
         </AnimatePresence>
