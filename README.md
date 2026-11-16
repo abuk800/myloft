@@ -14,7 +14,7 @@ npm run dev
 | Was | Datei |
 |---|---|
 | Preise, Pakete, Texte, Kontakt, FAQ, Bewertungen, Anlässe, WhatsApp-Texte | `lib/config.ts` |
-| Alle Bilder (aktuell Unsplash-Platzhalter, später echte Studiofotos) | `lib/images.ts` |
+| Alle Bilder (aktuell Unsplash-Platzhalter in der Stimmung der echten Studiofotos; echte Fotos z. B. als `/studio/xyz.jpg` eintragen) | `lib/images.ts` |
 | Beispiele der Customer-Cam-Wall und Instagram-Kacheln | `lib/cam.ts` |
 
 Offene Fakten sind sichtbar als **TODO** markiert (Quadratmeter, Add-on-Preise, Wochentags-Preis, Preis ab 2027, Antwortzeit, Storno-/Hausregeln, Parken/ÖPNV).

@@ -64,7 +64,7 @@ export default function EventsPage() {
           <Reveal className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl"><Photo k="tableLong" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
           <Reveal delay={0.1} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="tableCandles" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
           <Reveal delay={0.15} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl"><Photo k="babyshower" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
-          <Reveal delay={0.2} className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="realChairs" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
+          <Reveal delay={0.2} className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="phChairs" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
         </div>
       </section>
 

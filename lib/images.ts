@@ -17,17 +17,18 @@ export function src(img: Img | string, w = 1200): string {
 }
 
 export const IMG = {
-  // ── Echte Studiofotos (public/studio) ───────────────────
-  realStairs: { id: "/studio/treppe-gelaender.jpg", alt: "Model sitzt auf der offenen Treppe mit Metallgeländer im Studio" },
-  realCube: { id: "/studio/wuerfel-spotlight.jpg", alt: "Model auf weißem Würfel im Spotlight" },
-  realSofa: { id: "/studio/sofa-sessel.jpg", alt: "Frau sitzt auf dem cremefarbenen Sofa-Sessel vor weißem Hintergrund" },
-  realPregnant: { id: "/studio/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid" },
-  realPet: { id: "/studio/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
-  realBW: { id: "/studio/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
-  realSport: { id: "/studio/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
-  realCreator: { id: "/studio/creator-gimbal.jpg", alt: "Mete, Inhaber von MYLOFT STUDIO, mit Kamera-Gimbal" },
-  realWorkshop: { id: "/studio/masterclass-gruppe.jpg", alt: "Gruppenfoto bei der Make-up-Masterclass im Studio" },
-  realChairs: { id: "/studio/chiavari-stuehle.jpg", alt: "Weiße Chiavari-Stühle an gedeckter Tafel beim Workshop" },
+  // ── Platzhalter mit Stimmung der echten Studiofotos ─────
+  // (echte Fotos später hier eintragen, z. B. "/studio/treppe.jpg")
+  phStairs: { id: "1761164920810-25031499d736", alt: "Frau im schwarzen Kleid sitzt auf Treppe mit Geländer" },
+  phCube: { id: "1718251801071-25bdb8eb15e1", alt: "Model kniet vor dunkler Studiokulisse mit Lichtstativen" },
+  phSofa: { id: "1634149135349-d03e6f9bfedc", alt: "Frau sitzt auf cremefarbenem Sessel vor hellem Hintergrund" },
+  phPregnant: { id: "1739357367818-941fced00329", alt: "Schwangere im rosa Tüllkleid beim Babybauch-Shooting" },
+  phPet: { id: "1685169053427-441ac5dced74", alt: "Hund auf weißem Studioboden" },
+  phBW: { id: "1768818680860-c4abbb46eb79", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
+  phSport: { id: "1774813958520-b0ff8d830c13", alt: "Sport-Shooting vor weißem Hintergrund" },
+  phCreator: { id: "1548680307-4654426bf6c7", alt: "Videograf mit Kamera-Gimbal (Platzhalter, Foto von Mete folgt)" },
+  phWorkshop: { id: "1731848358154-52ebc3c4d590", alt: "Gruppe von Frauen beim Workshop-Gruppenfoto" },
+  phChairs: { id: "1782026456568-b2aaa170487b", alt: "Weiße Chiavari-Stühle mit Tüll bei einer Feier" },
 
   // ── Raum ───────────────────────────────────────────────
   sofaLounge: { id: "1784653548770-23c8f9022c4c", alt: "Heller Loft-Raum mit cremefarbenen Sofas" },

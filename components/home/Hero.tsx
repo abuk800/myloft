@@ -8,9 +8,9 @@ import { SITE } from "@/lib/config";
 import type { ImgKey } from "@/lib/images";
 
 const SLIDES: { k: ImgKey; pos?: string }[] = [
-  { k: "realStairs", pos: "50% 38%" },
   { k: "sofaLounge" },
-  { k: "realSofa", pos: "50% 42%" },
+  { k: "phSofa", pos: "50% 45%" },
+  { k: "studioCyc" },
   { k: "tableWhite" },
 ];
 
