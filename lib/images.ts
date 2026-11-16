@@ -17,6 +17,18 @@ export function src(img: Img | string, w = 1200): string {
 }
 
 export const IMG = {
+  // ── Echte Studiofotos (public/studio) ───────────────────
+  realStairs: { id: "/studio/treppe-gelaender.jpg", alt: "Model sitzt auf der offenen Treppe mit Metallgeländer im Studio" },
+  realCube: { id: "/studio/wuerfel-spotlight.jpg", alt: "Model auf weißem Würfel im Spotlight" },
+  realSofa: { id: "/studio/sofa-sessel.jpg", alt: "Frau sitzt auf dem cremefarbenen Sofa-Sessel vor weißem Hintergrund" },
+  realPregnant: { id: "/studio/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid" },
+  realPet: { id: "/studio/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
+  realBW: { id: "/studio/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
+  realSport: { id: "/studio/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
+  realCreator: { id: "/studio/creator-gimbal.jpg", alt: "Content Creator mit Kamera-Gimbal" },
+  realWorkshop: { id: "/studio/masterclass-gruppe.jpg", alt: "Gruppenfoto bei der Make-up-Masterclass im Studio" },
+  realChairs: { id: "/studio/chiavari-stuehle.jpg", alt: "Weiße Chiavari-Stühle an gedeckter Tafel beim Workshop" },
+
   // ── Raum ───────────────────────────────────────────────
   sofaLounge: { id: "1784653548770-23c8f9022c4c", alt: "Heller Loft-Raum mit cremefarbenen Sofas" },
   sofaLounge2: { id: "1784653548946-e7444b1d12d7", alt: "Cremefarbene Sofa-Ecke mit Marmortisch" },

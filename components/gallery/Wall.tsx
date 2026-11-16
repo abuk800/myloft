@@ -49,20 +49,20 @@ export default function Wall() {
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.6, delay: i * 0.03, ease: EASE }}
               onClick={() => setOpen(it.idx)}
-              aria-label={`Bild von ${it.handle} vergrößern`}
+              aria-label={`Beispielbild ${it.tag} vergrößern`}
               className={`zoom group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-xl bg-cream md:mb-4 ${it.ratio}`}
             >
               <Photo k={it.k} sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw" w={900} />
               <span className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent p-3 pt-12 text-left text-sm text-white">
-                <span>{it.handle}</span>
-                <span className="eyebrow hidden !text-[0.78rem] opacity-80 sm:inline">{it.tag}</span>
+                <span>{it.tag}</span>
+                <span className="hidden opacity-80 sm:inline">Beispiel</span>
               </span>
             </motion.button>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      <p className="mt-10 text-center text-sm text-ink-soft">Beispielbilder und Handles dienen in der Demo als Platzhalter. Echte Bilder erscheinen erst nach Freigabe.</p>
+      <p className="mt-10 text-center text-sm text-ink-soft">Beispielbilder aus dem Studio. Eingereichte Bilder erscheinen mit @Handle erst nach Freigabe.</p>
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <Link href="/galerie/upload" className="btn btn-dark">Dein Bild hochladen</Link>
       </div>
@@ -76,7 +76,7 @@ export default function Wall() {
             <button aria-label="Schließen" className="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white"><X className="h-6 w-6" /></button>
             <motion.figure initial={{ scale: 0.92, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95 }} transition={{ duration: 0.5, ease: EASE }} className="relative max-h-[86vh] w-full max-w-xl" onClick={(e) => e.stopPropagation()}>
               <Image src={src(IMG[cur.k], 1600)} alt={IMG[cur.k].alt} width={1200} height={1500} className="max-h-[78vh] w-full rounded-2xl object-contain" />
-              <figcaption className="mt-3 flex justify-between text-sm text-white/80"><span>{cur.handle}</span><span>{cur.tag}</span></figcaption>
+              <figcaption className="mt-3 flex justify-between text-sm text-white/80"><span>{cur.tag}</span><span>Beispielbild</span></figcaption>
             </motion.figure>
           </motion.div>
         )}

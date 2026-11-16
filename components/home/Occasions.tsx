@@ -22,7 +22,7 @@ export default function Occasions() {
                   full ? "aspect-[16/11] md:aspect-[21/8]" : wide ? "aspect-[16/11] md:aspect-[16/10]" : "aspect-[4/5]"
                 }`}
               >
-                <Photo k={o.image} sizes={wide ? "(min-width:768px) 50vw, 100vw" : "(min-width:768px) 25vw, 50vw"} w={1200} />
+                <Photo k={o.tile ?? o.image} sizes={wide ? "(min-width:768px) 50vw, 100vw" : "(min-width:768px) 25vw, 50vw"} w={1200} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent transition-opacity duration-500 group-hover:from-black/80" />
                 <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-ink opacity-0 transition-all duration-500 group-hover:opacity-100 group-active:opacity-100 md:right-4 md:top-4">
                   <ArrowUpRight className="h-4 w-4" />

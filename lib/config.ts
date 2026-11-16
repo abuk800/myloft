@@ -119,11 +119,11 @@ export const MAX_GUESTS = 66; // aus der Stuhlanzahl; TODO: offizielle Kapazitä
 
 // ── Sets ────────────────────────────────────────────────
 export const SETS: { id: string; name: string; perfect: string; images: ImgKey[]; hero: ImgKey }[] = [
-  { id: "treppe", name: "Die Treppe", perfect: "Perfekt für Fashion-Looks, Paar-Shootings und dramatische Bildkompositionen.", hero: "stairsSpiral", images: ["stairsSpiral", "stairsWhite", "portraitB"] },
-  { id: "white", name: "White Set", perfect: "Perfekt für Portraits, Produkte und alles, was Fokus braucht.", hero: "studioCyc", images: ["studioCyc", "portraitC", "portraitF"] },
-  { id: "sofa", name: "Sofa-Ecke", perfect: "Perfekt für Lifestyle, Familie und entspannte Besties-Fotos.", hero: "sofaLounge", images: ["sofaLounge", "sofaLounge2", "friendsLaugh"] },
-  { id: "bogen", name: "Rundbogen-Tür", perfect: "Perfekt für Babybauch, Hochzeits-Vibes und weiche Silhouetten.", hero: "pregnancyC", images: ["pregnancyC", "pregnancyA", "pregnancyB"] },
-  { id: "licht", name: "Studiolicht", perfect: "Perfekt für Teams, Marken-Content und kontrollierte Looks.", hero: "studioSoftbox", images: ["studioSoftbox", "studioShoot", "cameraRig"] },
+  { id: "treppe", name: "Die Treppe", perfect: "Perfekt für Fashion-Looks, Paar-Shootings und dramatische Bildkompositionen.", hero: "realStairs", images: ["realStairs", "stairsSpiral", "portraitB"] },
+  { id: "white", name: "White Set", perfect: "Perfekt für Portraits, Produkte und alles, was Fokus braucht.", hero: "realPet", images: ["realPet", "studioCyc", "portraitC"] },
+  { id: "sofa", name: "Sofa-Ecke", perfect: "Perfekt für Lifestyle, Familie und entspannte Besties-Fotos.", hero: "realSofa", images: ["realSofa", "sofaLounge", "sofaLounge2"] },
+  { id: "bogen", name: "Rundbogen-Tür", perfect: "Perfekt für Babybauch, Hochzeits-Vibes und weiche Silhouetten.", hero: "realPregnant", images: ["realPregnant", "pregnancyC", "pregnancyA"] },
+  { id: "licht", name: "Studiolicht", perfect: "Perfekt für Teams, Marken-Content und kontrollierte Looks.", hero: "realCube", images: ["realCube", "realBW", "studioSoftbox"] },
   { id: "saison", name: "Saisonset", perfect: "Perfekt für Weihnachts-Special, Mini-Sessions und Geschenk-Shootings.", hero: "christmas", images: ["christmas", "christmasRed", "portraitD"] },
 ];
 
@@ -132,7 +132,8 @@ export type Occasion = {
   slug: string;
   title: string;
   short: string;
-  image: ImgKey;
+  image: ImgKey; // Hero (muss hochauflösend sein)
+  tile?: ImgKey; // Kachel auf der Startseite (darf kleiner sein)
   gallery: ImgKey[];
   headline: string;
   intro: string;
@@ -151,7 +152,7 @@ export const OCCASIONS: Occasion[] = [
     title: "Content & Creator",
     short: "Viele Looks in kurzer Zeit",
     image: "cameraBlue",
-    gallery: ["cameraBlue", "studioShoot", "portraitE", "cameraRig"],
+    gallery: ["realSport", "realCreator", "realStairs", "cameraBlue"],
     headline: "Kamera und Licht stehen bereit.",
     intro: "Reels, Fotos, BTS: In zwei Etagen wechselst du in Minuten zwischen Treppe, White Set und Sofa-Ecke. Profikamera und Dauerlicht sind im Preis dabei.",
     points: ["Canon R6 mit 24–70 mm f/2.8 inklusive", "Dauerlicht und weißer Boden-Set", "Mehrere Sets ohne Umbau in einer Session", "Ab 190 € für 2 Stunden"],
@@ -168,7 +169,7 @@ export const OCCASIONS: Occasion[] = [
     title: "Bestie-Shoot",
     short: "Das ganze Loft für euch",
     image: "friendsLaugh",
-    gallery: ["friendsLaugh", "friendsCheers", "sofaLounge2", "friendsFun"],
+    gallery: ["friendsLaugh", "realSofa", "friendsCheers", "sofaLounge2"],
     headline: "Bestie-Day im Studio: das ganze Loft für euch.",
     intro: "Your sign to book a studio with your besties. Unter der Woche mietet ihr das Studio komplett allein, mit Profikamera und Lichtsetup. Ihr müsst keine Models sein, nur zusammen kommen.",
     points: ["Studio unter der Woche komplett für euch", "Profikamera und Lichtsetup inklusive", "Bis zu 4, 6 oder 8 Personen je nach Paket", "Wochentags-Preis: TODO"],
@@ -185,7 +186,8 @@ export const OCCASIONS: Occasion[] = [
     title: "Schwangerschaft & Familie",
     short: "Erinnerungen in weichem Licht",
     image: "pregnancyA",
-    gallery: ["pregnancyA", "pregnancyC", "pregnancyB", "pregnancyDark"],
+    tile: "realPregnant",
+    gallery: ["realPregnant", "pregnancyC", "realPet", "pregnancyB"],
     headline: "Weiches Licht für Momente, die bleiben.",
     intro: "Babybauch-Shooting, Familienfotos oder ein Portrait zu zweit: Der Rundbogen, helle Wände und ruhiges Studiolicht geben jedem Bild Raum. Ohne Hektik, in deinem Tempo.",
     points: ["Heller Raum mit Rundbogen-Tür und Sofa-Ecke", "Ruhiges Dauerlicht, gut für sanfte Portraits", "Option mit Fotograf (TODO: Preis und Verfügbarkeit)", "Pakete ab 2 Stunden"],
@@ -202,7 +204,7 @@ export const OCCASIONS: Occasion[] = [
     title: "Brand & Team",
     short: "Team-, Produkt- und Brand-Content",
     image: "studioCyc",
-    gallery: ["studioCyc", "studioSoftbox", "portraitC", "portraitD"],
+    gallery: ["realBW", "studioCyc", "realCube", "portraitC"],
     headline: "Euer Team. Euer Look. Ein Nachmittag.",
     intro: "Teamfotos, Produktbilder, Recruiting-Content: Das weiße Set und kontrolliertes Licht liefern einen sauberen, einheitlichen Look. Bis zu 8 Personen im 6-Stunden-Paket.",
     points: ["Weißes Set mit Studioblitzen und Softboxen", "Platz für bis zu 8 Personen (6-Std.-Paket)", "Rechnung auf Anfrage (TODO: bestätigen)", "Fotograf / Videograf als Extra"],
@@ -236,7 +238,7 @@ export const OCCASIONS: Occasion[] = [
     title: "Geburtstag & Babyparty",
     short: "Location ohne Deko-Stress",
     image: "tableWhite",
-    gallery: ["tableWhite", "babyshower", "babyLetters", "tableDetail"],
+    gallery: ["tableWhite", "babyshower", "babyLetters", "realChairs"],
     headline: "Feiern, wo andere shooten.",
     intro: "66 Stühle, 6 große Bankett-Tische, Tischdecken, Küche und ein Getting-Ready-Room: Du bringst die Gäste mit, das Loft ist bereit. Für Geburtstage, Babypartys und alles dazwischen.",
     points: ["750 € ganztägig (gültig bis 31.12.2026)", "Küche, zwei Toiletten, Getting-Ready-Room", "Zwei Stockwerke, Reinigung danach inklusive", "Fotowand: der Raum ist selbst die Kulisse"],
@@ -254,7 +256,8 @@ export const OCCASIONS: Occasion[] = [
     title: "Workshop & Community-Event",
     short: "Masterclass, Ladies Event, Casting",
     image: "whiteHall",
-    gallery: ["whiteHall", "brightRoom2", "tableLong", "tableDetail"],
+    tile: "realWorkshop",
+    gallery: ["realWorkshop", "realChairs", "whiteHall", "tableLong"],
     headline: "Dein Format. Unser Loft.",
     intro: "Make-up-Masterclass, Ladies Event, Healing Circle oder Model-Casting: Der helle Raum auf zwei Etagen macht jedes Community-Format zum Erlebnis, mit Küche und Platz für 66 Gäste.",
     points: ["Zwei Etagen mit viel Licht", "Stühle, Tische und Küche vorhanden", "Als Anfrage mit Wunschdatum und Gästezahl", "Workshop-Raum im Taunus"],

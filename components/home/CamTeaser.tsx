@@ -30,7 +30,7 @@ export default function CamTeaser() {
               <div className={`zoom group relative overflow-hidden rounded-xl bg-cream ${it.ratio}`}>
                 <Photo k={it.k} sizes="(min-width:768px) 30vw, 50vw" w={900} />
                 <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3 pt-10 text-sm text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100 max-md:opacity-100">
-                  {it.handle}
+                  {it.tag}
                 </span>
               </div>
             </Reveal>
