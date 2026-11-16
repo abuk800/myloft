@@ -12,11 +12,11 @@ export function StepHeader({ steps, current, onBack, dark = false }: { steps: st
         <button
           onClick={onBack}
           disabled={!onBack}
-          className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] transition-opacity ${onBack ? "opacity-100" : "pointer-events-none opacity-0"}`}
+          className={`flex items-center gap-2 text-sm uppercase tracking-[0.2em] transition-opacity ${onBack ? "opacity-100" : "pointer-events-none opacity-0"}`}
         >
           <ArrowLeft className="h-4 w-4" /> Zurück
         </button>
-        <p className={`eyebrow !text-[0.62rem] ${dark ? "text-white/50" : "text-ink-soft"}`}>
+        <p className={`eyebrow !text-[0.78rem] ${dark ? "text-white/70" : "text-ink-soft"}`}>
           Schritt {current + 1} / {steps.length} · {steps[current]}
         </p>
       </div>

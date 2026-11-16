@@ -17,7 +17,7 @@ export default function StickyBar() {
       initial={{ y: 110 }}
       animate={{ y: 0 }}
       transition={{ delay: 1.2, duration: 0.9, ease: EASE }}
-      className="safe-bottom fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-black/5 bg-paper/90 px-4 pt-3 backdrop-blur-xl md:hidden"
+      className="safe-bottom fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-black/5 bg-paper px-4 pt-3 md:hidden"
     >
       <Link href="/buchen" className="btn btn-dark flex-1">Studio buchen</Link>
       <a

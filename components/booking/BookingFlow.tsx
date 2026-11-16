@@ -89,8 +89,8 @@ export default function BookingFlow() {
         </motion.h1>
         <p className="mt-4 text-ink-soft">Wir freuen uns auf dich, {form.name.split(" ")[0]}. Eine Bestätigung geht an {form.email}.</p>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8, ease: EASE }} className="mt-10 rounded-[1.6rem] bg-cream/70 p-7 text-left">
-          <p className="eyebrow !text-[0.62rem] text-ink-soft">Buchungsnummer {done}</p>
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8, ease: EASE }} className="mt-10 rounded-2xl bg-cream/70 p-7 text-left">
+          <p className="eyebrow !text-[0.78rem] text-ink-soft">Buchungsnummer {done}</p>
           <dl className="mt-5 space-y-4 text-sm">
             {[
               ["Paket", `${pkg.name} · ${eur(pkg.price)}`],
@@ -111,7 +111,7 @@ export default function BookingFlow() {
           <a href={waLink(msg)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white"><WhatsAppIcon className="h-5 w-5" /> Rückfrage auf WhatsApp</a>
           <Link href="/" className="btn btn-line">Zur Startseite</Link>
         </div>
-        <p className="mt-8 text-xs text-ink-soft">Demo-Modus: Es wurde keine echte Buchung angelegt.</p>
+        <p className="mt-8 text-sm text-ink-soft">Demo-Modus: Es wurde keine echte Buchung angelegt.</p>
       </div>
     );
   }
@@ -136,14 +136,14 @@ export default function BookingFlow() {
                       <button
                         key={p.id}
                         onClick={() => { setPkg(p); setPeople((v) => Math.min(v, p.people)); setSlot(null); }}
-                        className={`relative flex w-full items-center justify-between rounded-[1.4rem] border p-6 text-left transition-all duration-500 ${on ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink/40"}`}
+                        className={`relative flex w-full items-center justify-between rounded-2xl border p-6 text-left transition-all duration-500 ${on ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink/40"}`}
                       >
                         <div>
                           <p className="font-serif text-3xl">{p.name}</p>
                           <p className={`mt-1 text-sm ${on ? "text-white/65" : "text-ink-soft"}`}>Bis {p.people} Personen · {p.lights} Dauerlichter</p>
                         </div>
                         <p className="display text-4xl">{eur(p.price)}</p>
-                        {p.featured && <span className="eyebrow absolute -top-2.5 left-6 rounded-full bg-champagne px-2.5 py-1 !text-[0.55rem] text-ink">Beliebt</span>}
+                        {p.featured && <span className="eyebrow absolute -top-2.5 left-6 rounded-full bg-champagne px-2.5 py-1 !text-[0.78rem] text-ink">Beliebt</span>}
                       </button>
                     );
                   })}
@@ -156,7 +156,7 @@ export default function BookingFlow() {
                 <h1 className="display text-5xl md:text-6xl">Wann <em>passt&apos;s?</em></h1>
                 <p className="mt-3 text-ink-soft">Täglich 07:00–24:00 Uhr. Freie Zeiten für {pkg.name}:</p>
 
-                <div className="no-scrollbar -mx-5 mt-8 flex gap-2 overflow-x-auto px-5 pb-2 md:mx-0 md:px-0">
+                <div className="no-scrollbar -mx-5 mt-8 flex gap-2 after:w-px after:shrink-0 after:content-[''] overflow-x-auto px-5 pb-2 md:mx-0 md:px-0">
                   {days.map((d) => {
                     const k = iso(d);
                     const on = date === k;
@@ -166,9 +166,9 @@ export default function BookingFlow() {
                         onClick={() => { setDate(k); setSlot(null); }}
                         className={`flex w-[4.2rem] shrink-0 flex-col items-center rounded-2xl border py-3 transition-all duration-300 ${on ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink/40"}`}
                       >
-                        <span className="eyebrow !text-[0.58rem] opacity-60">{DAY[d.getDay()]}</span>
+                        <span className="eyebrow !text-[0.78rem] opacity-60">{DAY[d.getDay()]}</span>
                         <span className="font-serif text-3xl leading-tight">{d.getDate()}</span>
-                        <span className="text-[0.65rem] opacity-60">{MONTH[d.getMonth()]}</span>
+                        <span className="text-[0.8rem] opacity-60">{MONTH[d.getMonth()]}</span>
                       </button>
                     );
                   })}
@@ -192,7 +192,7 @@ export default function BookingFlow() {
                 ) : (
                   <p className="mt-8 rounded-2xl bg-cream/60 p-5 text-sm text-ink-soft">Wähle oben einen Tag, dann siehst du die freien Zeiten.</p>
                 )}
-                <p className="mt-5 text-xs text-ink-soft">Unter der Woche gilt der Bestie-Deal. <TodoTag>TODO: Preis</TodoTag></p>
+                <p className="mt-5 text-sm text-ink-soft">Unter der Woche gilt der Bestie-Deal. <TodoTag>TODO: Preis</TodoTag></p>
               </div>
             )}
 
@@ -245,7 +245,7 @@ export default function BookingFlow() {
                     ["phone", "Telefon / WhatsApp (optional)", "tel", "tel"],
                   ] as const).map(([k, label, type, ac]) => (
                     <label key={k} className="block">
-                      <span className="eyebrow !text-[0.6rem] text-ink-soft">{label}</span>
+                      <span className="eyebrow !text-[0.78rem] text-ink-soft">{label}</span>
                       <input
                         type={type}
                         autoComplete={ac}
@@ -256,7 +256,7 @@ export default function BookingFlow() {
                     </label>
                   ))}
                 </div>
-                <p className="mt-5 text-xs leading-relaxed text-ink-soft">Mit dem Klick auf „Verbindlich buchen“ akzeptierst du die Buchungsbedingungen (Storno- und Hausregeln: TODO).</p>
+                <p className="mt-5 text-sm leading-relaxed text-ink-soft">Mit dem Klick auf „Verbindlich buchen“ akzeptierst du die Buchungsbedingungen (Storno- und Hausregeln: TODO).</p>
               </div>
             )}
           </StepBody>
@@ -264,10 +264,10 @@ export default function BookingFlow() {
 
         {/* Zusammenfassung Desktop */}
         <aside className="hidden md:col-span-5 md:block">
-          <div className="sticky top-28 overflow-hidden rounded-[1.6rem] bg-cream/70">
+          <div className="sticky top-28 overflow-hidden rounded-2xl bg-cream/70">
             <div className="relative aspect-[16/10]"><Photo k="studioCyc" sizes="40vw" w={900} /></div>
             <div className="p-7">
-              <p className="eyebrow !text-[0.62rem] text-ink-soft">Deine Buchung</p>
+              <p className="eyebrow !text-[0.78rem] text-ink-soft">Deine Buchung</p>
               <dl className="mt-5 space-y-3 text-sm">
                 <Row k="Paket" v={pkg ? `${pkg.name}` : "–"} />
                 <Row k="Termin" v={date && slot !== null ? `${dateLabel}, ${timeLabel}` : "–"} />
@@ -284,10 +284,10 @@ export default function BookingFlow() {
       </div>
 
       {/* Sticky Action-Bar */}
-      <div className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-black/5 bg-paper/92 px-4 pt-3 backdrop-blur-xl md:static md:z-auto md:mt-10 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+      <div className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-black/5 bg-paper px-4 pt-3 md:static md:z-auto md:mt-10 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
         <div className="mx-auto flex max-w-5xl items-center gap-4 md:max-w-none md:justify-start">
           <div className="md:hidden">
-            <p className="eyebrow !text-[0.55rem] text-ink-soft">Gesamt</p>
+            <p className="eyebrow !text-[0.78rem] text-ink-soft">Gesamt</p>
             <p className="display text-3xl leading-none">{pkg ? eur(total) : "–"}</p>
           </div>
           <button onClick={next} disabled={!valid} className="btn btn-dark flex-1 disabled:opacity-30 md:max-w-xs md:flex-none">

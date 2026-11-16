@@ -56,13 +56,13 @@ export default function Upload() {
         </motion.div>
         <h1 className="display mt-8 text-6xl">Danke! <em>Wir schauen rein.</em></h1>
         <p className="mt-4 text-ink-soft">Deine Bilder erscheinen auf der Wand, sobald wir sie freigegeben haben.</p>
-        <div className="mt-10 rounded-[1.5rem] bg-cream/70 p-7">
+        <div className="mt-10 rounded-2xl bg-cream/70 p-7">
           <p className="font-serif text-3xl">Hat&apos;s dir gefallen?</p>
           <p className="mt-2 text-sm text-ink-soft">Eine Google-Bewertung hilft uns enorm.</p>
           <a href={SITE.google.reviewUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark mt-6 w-full"><GoogleG className="h-5 w-5 rounded-full bg-white p-0.5" /> Bewerte uns auf Google</a>
         </div>
         <Link href="/galerie" className="btn btn-line mt-4 w-full">Zur Galerie</Link>
-        <p className="mt-8 text-xs text-ink-soft">Demo-Modus: Es wurde nichts hochgeladen.</p>
+        <p className="mt-8 text-sm text-ink-soft">Demo-Modus: Es wurde nichts hochgeladen.</p>
       </div>
     );
   }
@@ -71,11 +71,10 @@ export default function Upload() {
     <div className="mx-auto max-w-5xl px-5 pb-28 pt-28 md:px-10 md:pt-36">
       <div className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="eyebrow text-ink-soft">Customer Cam</p>
           <h1 className="display mt-4 text-5xl md:text-6xl">Zeig uns dein <em>Shooting.</em></h1>
           <p className="mt-5 text-ink-soft">Lade deine Lieblingsbilder hoch. Nach unserer Freigabe erscheinen sie mit deinem @Handle auf der Wand.</p>
 
-          <div className="mt-8 flex items-center gap-5 rounded-[1.5rem] bg-cream/70 p-5">
+          <div className="mt-8 flex items-center gap-5 rounded-2xl bg-cream/70 p-5">
             <div className="h-24 w-24 shrink-0 rounded-xl bg-white p-2 text-ink"><FakeQr /></div>
             <div>
               <p className="font-serif text-2xl leading-tight">Im Studio scannen</p>
@@ -94,7 +93,7 @@ export default function Upload() {
               onClick={() => input.current?.click()}
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => { e.preventDefault(); add(e.dataTransfer.files); }}
-              className="grid w-full place-items-center rounded-[1.5rem] border border-dashed border-ink/30 bg-white px-6 py-12 text-center transition-colors hover:border-ink hover:bg-cream/40"
+              className="grid w-full place-items-center rounded-2xl border border-dashed border-ink/30 bg-white px-6 py-12 text-center transition-colors hover:border-ink hover:bg-cream/40"
             >
               <ImagePlus className="h-9 w-9 text-gold" strokeWidth={1.2} />
               <span className="mt-4 font-serif text-2xl">Bilder auswählen</span>
@@ -114,14 +113,14 @@ export default function Upload() {
             )}
           </div>
 
-          <label className="block"><span className="eyebrow !text-[0.6rem] text-ink-soft">Instagram-Handle</span>
+          <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Instagram-Handle</span>
             <input value={handle} onChange={(e) => setHandle(e.target.value)} placeholder="@deinhandle" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 text-base outline-none focus:border-ink" /></label>
 
           <div>
-            <span className="eyebrow !text-[0.6rem] text-ink-soft">Anlass</span>
+            <span className="eyebrow !text-[0.78rem] text-ink-soft">Anlass</span>
             <div className="mt-3 flex flex-wrap gap-2">
               {OCC.map((o) => (
-                <button type="button" key={o} onClick={() => setOcc(o)} className={`eyebrow rounded-full border px-4 py-2.5 !text-[0.62rem] transition-colors ${occ === o ? "border-ink bg-ink text-white" : "border-ink/20"}`}>{o}</button>
+                <button type="button" key={o} onClick={() => setOcc(o)} className={`eyebrow rounded-full border px-4 py-2.5 !text-[0.78rem] transition-colors ${occ === o ? "border-ink bg-ink text-white" : "border-ink/20"}`}>{o}</button>
               ))}
             </div>
           </div>

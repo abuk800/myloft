@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          light ? "bg-transparent text-white" : dark && !open ? "bg-night/95 text-white shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl" : "bg-paper/95 text-ink shadow-[0_1px_0_var(--line)] backdrop-blur-xl"
+          light ? "bg-transparent text-white" : dark && !open ? "bg-night text-white shadow-[0_1px_0_rgba(255,255,255,0.08)]" : "bg-paper text-ink shadow-[0_1px_0_var(--line)]"
         }`}
       >
         <div className="mx-auto flex h-[4.25rem] max-w-[88rem] items-center justify-between px-5 md:h-20 md:px-10">
@@ -47,7 +47,7 @@ export default function Header() {
 
           <nav className="hidden items-center gap-9 lg:flex" aria-label="Hauptnavigation">
             {NAV.map((n) => (
-              <Link key={n.href} href={n.href} className="group relative text-[0.72rem] font-medium uppercase tracking-[0.2em]">
+              <Link key={n.href} href={n.href} className="group relative text-[0.8rem] font-medium uppercase tracking-[0.2em]">
                 {n.label}
                 <span className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-500 group-hover:scale-x-100" />
               </Link>
@@ -100,7 +100,7 @@ export default function Header() {
             <div className="space-y-4">
               <Link href="/buchen" className="btn btn-dark w-full">Studio buchen</Link>
               <Link href="/events/anfragen" className="btn btn-line w-full">Event anfragen</Link>
-              <p className="pt-2 text-center text-xs text-ink-soft">
+              <p className="pt-2 text-center text-sm text-ink-soft">
                 {SITE.address.street} · {SITE.address.zip} {SITE.address.city}
               </p>
             </div>

@@ -1,17 +1,16 @@
 "use client";
 
 import { Play } from "lucide-react";
-import { Eyebrow, InstagramIcon, Lines, Photo, Reveal } from "../ui";
+import { InstagramIcon, Lines, Photo, Reveal } from "../ui";
 import { IG_TILES } from "@/lib/cam";
 import { SITE } from "@/lib/config";
 
 export default function InstagramGrid() {
   return (
-    <section className="bg-cream/60 py-24 md:py-36">
+    <section className="bg-cream/60 py-16 md:py-24">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <Eyebrow className="flex items-center gap-2 text-ink-soft"><InstagramIcon className="h-4 w-4" /> Instagram</Eyebrow>
             <Lines className="display mt-5 text-[2.7rem] md:text-7xl" lines={[<em key="a">{SITE.instagram.handle}</em>]} />
             <Reveal><p className="mt-4 text-sm text-ink-soft">{SITE.instagram.followers} Follower · Events | Foto | Video | Podcast | Content</p></Reveal>
           </div>
@@ -32,7 +31,7 @@ export default function InstagramGrid() {
               >
                 <Photo k={t.k} sizes="(min-width:768px) 15vw, 33vw" w={600} />
                 {t.reel && (
-                  <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/40 text-white backdrop-blur">
+                  <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/40 text-white">
                     <Play className="h-3 w-3 fill-current" />
                   </span>
                 )}

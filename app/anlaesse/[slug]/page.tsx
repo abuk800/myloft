@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import CtaBand from "@/components/CtaBand";
-import { Eyebrow, Photo, Reveal, TodoTag } from "@/components/ui";
+import { Photo, Reveal, TodoTag } from "@/components/ui";
 import { OCCASIONS, PACKAGES, WA, EVENT, eur } from "@/lib/config";
 
 export function generateStaticParams() {
@@ -38,7 +38,6 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
       <section className="mx-auto max-w-[88rem] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-6">
-            <Eyebrow className="text-ink-soft">{o.title}</Eyebrow>
             <p className="display mt-5 text-[2rem] leading-[1.12] md:text-5xl">{o.intro}</p>
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-6">
@@ -58,7 +57,7 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
           {o.gallery.map((k, i) => (
             <Reveal key={k} delay={i * 0.08} className={i % 3 === 0 ? "md:mt-12" : ""}>
-              <div className="zoom relative aspect-[3/4] overflow-hidden rounded-[1.3rem] bg-cream">
+              <div className="zoom relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream">
                 <Photo k={k} sizes="(min-width:768px) 25vw, 50vw" w={900} />
               </div>
             </Reveal>
@@ -71,7 +70,6 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
           {isEvent ? (
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
               <div>
-                <Eyebrow className="text-champagne">Pauschale</Eyebrow>
                 <p className="display mt-3 text-6xl text-champagne md:text-8xl">{eur(EVENT.price)} <span className="text-3xl text-white md:text-5xl">ganztägig</span></p>
                 <p className="mt-3 text-sm text-white/60">Gültig bis {EVENT.validUntil}. Reinigung danach inklusive.</p>
               </div>
@@ -79,12 +77,12 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
             </div>
           ) : (
             <>
-              <Eyebrow className="text-ink-soft">Preise</Eyebrow>
+              <h2 className="display text-4xl md:text-5xl">Preise</h2>
               <div className="mt-8 grid gap-3 md:grid-cols-3">
                 {PACKAGES.map((p) => (
-                  <Link key={p.id} href={`/buchen?paket=${p.id}`} className="group flex items-end justify-between rounded-[1.3rem] bg-white p-6 transition-transform duration-500 hover:-translate-y-1">
+                  <Link key={p.id} href={`/buchen?paket=${p.id}`} className="group flex items-end justify-between rounded-2xl bg-white p-6 transition-transform duration-500 hover:-translate-y-1">
                     <div>
-                      <p className="eyebrow !text-[0.62rem] text-ink-soft">{p.name} · bis {p.people} Pers.</p>
+                      <p className="eyebrow !text-[0.78rem] text-ink-soft">{p.name} · bis {p.people} Pers.</p>
                       <p className="display mt-2 text-5xl">{eur(p.price)}</p>
                     </div>
                     <span className="text-2xl transition-transform duration-500 group-hover:translate-x-1.5">→</span>
@@ -97,16 +95,15 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-24 md:px-10 md:py-32">
-        <Eyebrow className="text-ink-soft">FAQ</Eyebrow>
-        <h2 className="display mt-5 text-[2.5rem] md:text-5xl">Gut zu wissen.</h2>
+        <h2 className="display text-[2.5rem] md:text-5xl">Häufige Fragen</h2>
         <div className="mt-10"><Faq items={o.faqs} /></div>
       </section>
 
       <section className="mx-auto max-w-[88rem] px-5 pb-24 md:px-10">
-        <Eyebrow className="text-ink-soft">Mehr Anlässe</Eyebrow>
+        <h2 className="display text-4xl md:text-5xl">Mehr Anlässe</h2>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {others.map((x) => (
-            <Link key={x.slug} href={`/anlaesse/${x.slug}`} className="zoom group relative block aspect-[16/10] overflow-hidden rounded-[1.3rem]">
+            <Link key={x.slug} href={`/anlaesse/${x.slug}`} className="zoom group relative block aspect-[16/10] overflow-hidden rounded-2xl">
               <Photo k={x.image} sizes="(min-width:768px) 30vw, 100vw" w={900} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <p className="display absolute bottom-4 left-5 text-3xl text-white">{x.title}</p>

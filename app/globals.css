@@ -8,6 +8,7 @@
   --cream-deep: #e3d7c3;
   --line: #e7e1d6;
   --gold: #b99b5e;
+  --gold-deep: #86692d;
   --champagne: #e9d6a6;
   --night: #15100c;
   --night-2: #1d1713;
@@ -21,11 +22,12 @@
   --color-cream-deep: var(--cream-deep);
   --color-line: var(--line);
   --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
   --color-champagne: var(--champagne);
   --color-night: var(--night);
   --color-night-2: var(--night-2);
   --font-serif: var(--font-cormorant), "Times New Roman", serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
 
 html {
@@ -37,6 +39,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -50,8 +53,8 @@ body {
 @layer components {
 /* ── Typo-Helfer ───────────────────────────── */
 .eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -61,12 +64,11 @@ body {
   font-family: var(--font-serif);
   font-weight: 400;
   line-height: 0.98;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
 }
 
 .display em {
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
 }
 
 /* ── Buttons ───────────────────────────────── */
@@ -78,8 +80,8 @@ body {
   min-height: 3.25rem;
   padding: 0 1.75rem;
   border-radius: 999px;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-size: 0.86rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
@@ -117,7 +119,6 @@ body {
 }
 .btn-gold:hover {
   background: #f1e2bb;
-  box-shadow: 0 12px 30px -12px rgba(233, 214, 166, 0.45);
 }
 .btn-line-light {
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -188,4 +189,15 @@ body {
   [data-kenburns] {
     animation: none !important;
   }
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p,
+li,
+blockquote {
+  text-wrap: pretty;
 }

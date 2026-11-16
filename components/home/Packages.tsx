@@ -2,19 +2,18 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { Eyebrow, Ico, Lines, Reveal, TodoTag } from "../ui";
+import { Ico, Lines, Reveal, TodoTag } from "../ui";
 import { INCLUDED, PACKAGES, WEEKDAY, eur } from "@/lib/config";
 
 export default function Packages({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="mx-auto max-w-[88rem] px-5 py-24 md:px-10 md:py-36">
+    <section className="mx-auto max-w-[88rem] px-5 py-16 md:px-10 md:py-28">
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
-          <Eyebrow className="text-ink-soft">Pakete & Preise</Eyebrow>
-          <Lines className="display mt-5 text-[2.7rem] md:text-7xl" lines={["Kamera und Licht", <em key="a">sind schon da.</em>]} />
+          <Lines className="display mt-5 text-[2.7rem] md:text-7xl" lines={["Pakete ab 190 €,", "Kamera und Licht inklusive."]} />
         </div>
         <Reveal>
-          <p className="max-w-sm text-base leading-relaxed text-ink-soft">Du musst nur kommen. Alle Preise stehen offen auf dem Tisch.</p>
+          <p className="max-w-sm text-base leading-relaxed text-ink-soft">Alle Preise stehen offen hier. Studio, Kamera und Dauerlicht sind in jedem Paket.</p>
         </Reveal>
       </div>
 
@@ -30,12 +29,12 @@ export default function Packages({ compact = false }: { compact?: boolean }) {
         {PACKAGES.map((p, i) => (
           <Reveal key={p.id} delay={i * 0.1}>
             <div
-              className={`relative flex h-full flex-col rounded-[1.6rem] p-7 transition-transform duration-500 hover:-translate-y-1.5 md:p-9 ${
+              className={`relative flex h-full flex-col rounded-2xl p-7 transition-transform duration-500 hover:-translate-y-1.5 md:p-9 ${
                 p.featured ? "bg-ink text-white md:-mt-4 md:pb-12 md:pt-12" : "bg-cream/70"
               }`}
             >
-              {p.featured && <span className="eyebrow absolute right-6 top-6 rounded-full bg-champagne px-3 py-1.5 !text-[0.58rem] text-ink">Beliebt</span>}
-              <p className="eyebrow !text-[0.66rem] opacity-60">{p.name}</p>
+              {p.featured && <span className="eyebrow absolute right-6 top-6 rounded-full bg-champagne px-3 py-1.5 !text-[0.78rem] text-ink">Beliebt</span>}
+              <p className="eyebrow !text-[0.78rem] opacity-60">{p.name}</p>
               <p className="display mt-4 text-[4.5rem] leading-none">{eur(p.price)}</p>
               <p className={`mt-4 text-sm leading-relaxed ${p.featured ? "text-white/70" : "text-ink-soft"}`}>{p.blurb}</p>
               <ul className="mt-6 space-y-3 text-sm">
@@ -52,7 +51,7 @@ export default function Packages({ compact = false }: { compact?: boolean }) {
       </div>
 
       <Reveal className="mt-6">
-        <div className="flex flex-col gap-4 rounded-[1.6rem] border border-line p-7 md:flex-row md:items-center md:justify-between md:p-9">
+        <div className="flex flex-col gap-4 rounded-2xl border border-line p-7 md:flex-row md:items-center md:justify-between md:p-9">
           <div>
             <p className="display text-3xl md:text-4xl">{WEEKDAY.title}</p>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-soft">{WEEKDAY.text}</p>
@@ -65,7 +64,7 @@ export default function Packages({ compact = false }: { compact?: boolean }) {
       </Reveal>
 
       {!compact && (
-        <p className="mt-6 text-xs text-ink-soft">
+        <p className="mt-6 text-sm text-ink-soft">
           Extras wie zusätzliches Licht, Fotograf/Videograf, Deko-Paket oder Hair & Make-up wählst du im Buchungsflow dazu.
         </p>
       )}

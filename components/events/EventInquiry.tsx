@@ -49,7 +49,7 @@ export default function EventInquiry() {
                   <button
                     key={o}
                     onClick={() => setOccasion(o)}
-                    className={`flex min-h-28 items-end rounded-[1.3rem] border p-5 text-left font-serif text-2xl leading-tight transition-all duration-300 ${occasion === o ? "border-champagne bg-champagne text-ink" : "border-white/15 hover:border-white/40"}`}
+                    className={`flex min-h-28 items-end rounded-2xl border p-5 text-left font-serif text-2xl leading-tight transition-all duration-300 ${occasion === o ? "border-champagne bg-champagne text-ink" : "border-white/15 hover:border-white/40"}`}
                   >
                     {o}
                   </button>
@@ -62,11 +62,11 @@ export default function EventInquiry() {
             <div>
               <h1 className="display text-5xl md:text-6xl">Wann soll&apos;s <em className="text-champagne">sein?</em></h1>
               <div className="mt-8 space-y-4">
-                <label className="block"><span className="eyebrow !text-[0.6rem] text-white/50">Wunschdatum</span>
+                <label className="block"><span className="eyebrow !text-[0.78rem] text-white/70">Wunschdatum</span>
                   <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={input} /></label>
-                <label className="block"><span className="eyebrow !text-[0.6rem] text-white/50">Uhrzeit (Beginn)</span>
+                <label className="block"><span className="eyebrow !text-[0.78rem] text-white/70">Uhrzeit (Beginn)</span>
                   <input type="time" value={time} onChange={(e) => setTime(e.target.value)} className={input} /></label>
-                <label className="block"><span className="eyebrow !text-[0.6rem] text-white/50">Ausweichdatum (optional)</span>
+                <label className="block"><span className="eyebrow !text-[0.78rem] text-white/70">Ausweichdatum (optional)</span>
                   <input type="date" value={alt} onChange={(e) => setAlt(e.target.value)} className={input} /></label>
               </div>
             </div>
@@ -80,8 +80,8 @@ export default function EventInquiry() {
                 type="range" min={5} max={MAX_GUESTS} value={guests} onChange={(e) => setGuests(+e.target.value)}
                 aria-label="Gästezahl" className="mt-8 h-2 w-full cursor-pointer accent-[#e9d6a6]"
               />
-              <div className="mt-2 flex justify-between text-xs text-white/50"><span>5</span><span>{MAX_GUESTS} Stühle vorhanden</span></div>
-              <p className="mt-6 text-xs text-white/40"><TodoTag>TODO</TodoTag> maximale Gästezahl bestätigen</p>
+              <div className="mt-2 flex justify-between text-sm text-white/70"><span>5</span><span>{MAX_GUESTS} Stühle vorhanden</span></div>
+              <p className="mt-6 text-sm text-white/70"><TodoTag>TODO</TodoTag> maximale Gästezahl bestätigen</p>
             </div>
           )}
 
@@ -112,10 +112,10 @@ export default function EventInquiry() {
               <h1 className="display text-5xl md:text-6xl">Wie erreichen <em className="text-champagne">wir dich?</em></h1>
               <div className="mt-8 space-y-4">
                 {([["name", "Name", "text", "name"], ["phone", "Telefon / WhatsApp", "tel", "tel"], ["email", "E-Mail", "email", "email"]] as const).map(([k, l, t, ac]) => (
-                  <label key={k} className="block"><span className="eyebrow !text-[0.6rem] text-white/50">{l}</span>
+                  <label key={k} className="block"><span className="eyebrow !text-[0.78rem] text-white/70">{l}</span>
                     <input type={t} autoComplete={ac} value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} className={input} /></label>
                 ))}
-                <label className="block"><span className="eyebrow !text-[0.6rem] text-white/50">Nachricht (optional)</span>
+                <label className="block"><span className="eyebrow !text-[0.78rem] text-white/70">Nachricht (optional)</span>
                   <textarea rows={4} value={f.msg} onChange={(e) => setF({ ...f, msg: e.target.value })} className={`${input} h-auto py-3`} /></label>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function EventInquiry() {
         </StepBody>
       </div>
 
-      <div className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-night/90 px-4 pt-3 backdrop-blur-xl">
+      <div className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-night px-4 pt-3">
         <div className="mx-auto max-w-2xl">
           <button onClick={next} disabled={!valid} className="btn btn-gold w-full disabled:opacity-30" style={{ transition: `all .4s cubic-bezier(${EASE.join(",")})` }}>
             {step === 4 ? "Anfrage senden" : "Weiter"}

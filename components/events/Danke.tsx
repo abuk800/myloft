@@ -29,8 +29,8 @@ export default function Danke() {
           Deine Anfrage für <strong className="font-medium text-white">{anlass}</strong>{date && <> am <strong className="font-medium text-white">{date}</strong></>} ist bei uns angekommen.
           Antwort meist innerhalb von <TodoTag>X</TodoTag> Stunden.
         </p>
-        <div className="mt-10 rounded-[1.5rem] border border-white/12 p-6 text-left text-sm text-white/70">
-          <p className="eyebrow !text-[0.6rem] text-champagne">Und jetzt?</p>
+        <div className="mt-10 rounded-2xl border border-white/12 p-6 text-left text-sm text-white/70">
+          <p className="eyebrow !text-[0.78rem] text-champagne">Und jetzt?</p>
           <ol className="mt-4 space-y-3">
             <li>1. Wir prüfen den Termin und melden uns bei dir.</li>
             <li>2. Wir besprechen Ablauf und Extras persönlich.</li>
@@ -41,7 +41,7 @@ export default function Danke() {
           <a href={waLink(msg || WA.events)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white"><WhatsAppIcon className="h-5 w-5" /> Schneller auf WhatsApp</a>
           <Link href="/" className="btn btn-line-light">Zur Startseite</Link>
         </div>
-        <p className="mt-8 text-xs text-white/35">Demo-Modus: Es wurde keine E-Mail verschickt.</p>
+        <p className="mt-8 text-sm text-white/70">Demo-Modus: Es wurde keine E-Mail verschickt.</p>
       </div>
     </div>
   );

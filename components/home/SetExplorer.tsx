@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Eyebrow, Lines, Photo, EASE, ArrowLink } from "../ui";
+import { Lines, Photo, EASE, ArrowLink } from "../ui";
 import { SETS } from "@/lib/config";
 
 export default function SetExplorer() {
@@ -13,13 +13,12 @@ export default function SetExplorer() {
   return (
     <section className="bg-cream/60 py-24 md:py-36">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
-        <Eyebrow className="text-ink-soft">Die Sets</Eyebrow>
-        <Lines className="display mt-5 max-w-3xl text-[2.7rem] md:text-7xl" lines={["Zwei Etagen.", <em key="a">Unendlich viele Looks.</em>]} />
+        <Lines className="display mt-5 max-w-3xl text-[2.7rem] md:text-7xl" lines={["Sechs Sets auf zwei Etagen"]} />
 
         <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-12 md:gap-14">
           {/* Bühne */}
-          <div className="md:col-span-7">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-cream-deep md:aspect-[5/5]">
+          <div className="min-w-0 md:col-span-7">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-cream-deep md:aspect-[5/5]">
               <AnimatePresence mode="popLayout">
                 <motion.div
                   key={set.id}
@@ -33,9 +32,6 @@ export default function SetExplorer() {
                 </motion.div>
               </AnimatePresence>
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-              <p className="eyebrow absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1.5 !text-[0.6rem] text-ink">
-                {String(a + 1).padStart(2, "0")} / {String(SETS.length).padStart(2, "0")}
-              </p>
             </div>
 
             <div className="mt-3 grid grid-cols-2 gap-3">
@@ -45,7 +41,7 @@ export default function SetExplorer() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + n * 0.1, duration: 0.8, ease: EASE }}
-                  className="zoom relative aspect-[4/3] overflow-hidden rounded-[1.1rem] bg-cream-deep"
+                  className="zoom relative aspect-[4/3] overflow-hidden rounded-xl bg-cream-deep"
                 >
                   <Photo k={k} sizes="(min-width:768px) 28vw, 50vw" w={900} />
                 </motion.div>
@@ -54,13 +50,13 @@ export default function SetExplorer() {
           </div>
 
           {/* Liste */}
-          <div className="md:col-span-5 md:pt-6">
-            <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 md:hidden">
+          <div className="min-w-0 md:col-span-5 md:pt-6">
+            <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 md:hidden after:w-px after:shrink-0 after:content-['']">
               {SETS.map((s, n) => (
                 <button
                   key={s.id}
                   onClick={() => setA(n)}
-                  className={`eyebrow shrink-0 rounded-full border px-4 py-3 !text-[0.65rem] transition-colors ${
+                  className={`eyebrow shrink-0 rounded-full border px-4 py-3 !text-[0.78rem] transition-colors ${
                     n === a ? "border-ink bg-ink text-white" : "border-ink/20 text-ink"
                   }`}
                 >
@@ -79,7 +75,6 @@ export default function SetExplorer() {
                     onMouseEnter={() => setA(n)}
                     className={`group flex w-full items-baseline gap-5 border-b border-ink/10 py-4 text-left transition-opacity duration-500 ${n === a ? "opacity-100" : "opacity-35 hover:opacity-70"}`}
                   >
-                    <span className="eyebrow !text-[0.62rem]">{String(n + 1).padStart(2, "0")}</span>
                     <span className="display text-5xl transition-transform duration-500 group-hover:translate-x-2">{s.name}</span>
                   </button>
                 </li>

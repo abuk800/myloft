@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function GaleriePage() {
   return (
     <>
-      <PageHero k="friendsLaugh" eyebrow="Galerie · Customer Cam" lines={["Dein Shooting.", <em key="a">Unsere Wand.</em>]} sub={`Bilder von euch, aus unserem Loft. Teile deine mit ${SITE.hashtag} oder lade sie direkt hoch.`}>
+      <PageHero k="friendsLaugh" eyebrow="Galerie · Customer Cam" lines={["Eure Shootings", "an unserer Wand"]} sub={`Bilder von euch, aus unserem Loft. Teile deine mit ${SITE.hashtag} oder lade sie direkt hoch.`}>
         <Link href="/galerie/upload" className="btn btn-light">Bilder hochladen</Link>
         <Link href="/buchen" className="btn btn-line-light">Selbst shooten</Link>
       </PageHero>
@@ -24,7 +24,7 @@ export default function GaleriePage() {
       </section>
 
       <InstagramGrid />
-      <CtaBand k="stairsWhite" title={["Dein Bild", "an unserer Wand."]} primary={{ href: "/buchen", label: "Studio buchen" }} secondary={{ href: "/galerie/upload", label: "Bilder hochladen" }} />
+      <CtaBand k="stairsWhite" title={["Dein Bild", "an der Wand."]} primary={{ href: "/buchen", label: "Studio buchen" }} secondary={{ href: "/galerie/upload", label: "Bilder hochladen" }} />
     </>
   );
 }

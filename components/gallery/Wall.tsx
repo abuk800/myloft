@@ -26,12 +26,12 @@ export default function Wall() {
 
   return (
     <>
-      <div className="no-scrollbar sticky top-[4.25rem] z-30 -mx-5 flex gap-2 overflow-x-auto bg-paper/90 px-5 py-4 backdrop-blur-xl md:top-20 md:mx-0 md:px-0">
+      <div className="no-scrollbar sticky top-[4.25rem] after:w-px after:shrink-0 after:content-[''] z-30 -mx-5 flex gap-2 overflow-x-auto bg-paper px-5 py-4 md:top-20 md:mx-0 md:px-0">
         {CAM_FILTERS.map((x) => (
           <button
             key={x}
             onClick={() => setF(x)}
-            className={`eyebrow shrink-0 rounded-full border px-5 py-3 !text-[0.65rem] transition-all duration-300 ${f === x ? "border-ink bg-ink text-white" : "border-ink/20 hover:border-ink/50"}`}
+            className={`eyebrow shrink-0 rounded-full border px-5 py-3 !text-[0.78rem] transition-all duration-300 ${f === x ? "border-ink bg-ink text-white" : "border-ink/20 hover:border-ink/50"}`}
           >
             {x}
           </button>
@@ -50,19 +50,19 @@ export default function Wall() {
               transition={{ duration: 0.6, delay: i * 0.03, ease: EASE }}
               onClick={() => setOpen(it.idx)}
               aria-label={`Bild von ${it.handle} vergrößern`}
-              className={`zoom group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-[1.1rem] bg-cream md:mb-4 ${it.ratio}`}
+              className={`zoom group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-xl bg-cream md:mb-4 ${it.ratio}`}
             >
               <Photo k={it.k} sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw" w={900} />
-              <span className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent p-3 pt-12 text-left text-xs text-white">
+              <span className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent p-3 pt-12 text-left text-sm text-white">
                 <span>{it.handle}</span>
-                <span className="eyebrow hidden !text-[0.52rem] opacity-80 sm:inline">{it.tag}</span>
+                <span className="eyebrow hidden !text-[0.78rem] opacity-80 sm:inline">{it.tag}</span>
               </span>
             </motion.button>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      <p className="mt-10 text-center text-xs text-ink-soft">Beispielbilder und Handles dienen in der Demo als Platzhalter. Echte Bilder erscheinen erst nach Freigabe.</p>
+      <p className="mt-10 text-center text-sm text-ink-soft">Beispielbilder und Handles dienen in der Demo als Platzhalter. Echte Bilder erscheinen erst nach Freigabe.</p>
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <Link href="/galerie/upload" className="btn btn-dark">Dein Bild hochladen</Link>
       </div>

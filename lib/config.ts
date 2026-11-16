@@ -152,7 +152,7 @@ export const OCCASIONS: Occasion[] = [
     short: "Viele Looks in kurzer Zeit",
     image: "cameraBlue",
     gallery: ["cameraBlue", "studioShoot", "portraitE", "cameraRig"],
-    headline: "Kamera und Licht sind schon da. Du musst nur kommen.",
+    headline: "Kamera und Licht stehen bereit.",
     intro: "Reels, Fotos, BTS: In zwei Etagen wechselst du in Minuten zwischen Treppe, White Set und Sofa-Ecke. Profikamera und Dauerlicht sind im Preis dabei.",
     points: ["Canon R6 mit 24–70 mm f/2.8 inklusive", "Dauerlicht und weißer Boden-Set", "Mehrere Sets ohne Umbau in einer Session", "Ab 190 € für 2 Stunden"],
     faqs: [

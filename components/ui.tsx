@@ -38,20 +38,21 @@ export function Reveal({
   );
 }
 
-/** Headline, Zeile für Zeile aus einer Maske hochgeschoben. */
+/** Headline, Zeile für Zeile aus einer Maske hochgeschoben. Trigger sitzt am (nicht geclippten) Heading. */
 export function Lines({
   lines, className = "", delay = 0, as: Tag = "h2", inView = true,
 }: { lines: React.ReactNode[]; className?: string; delay?: number; as?: "h1" | "h2" | "h3"; inView?: boolean }) {
   const M = motion[Tag];
+  const parent = inView
+    ? { initial: "hidden", whileInView: "show", viewport: { once: true, margin: "0px 0px -6% 0px" } }
+    : { initial: "hidden", animate: "show" };
   return (
-    <M className={className} aria-label={lines.map((l) => (typeof l === "string" ? l : "")).join(" ")}>
+    <M className={className} {...parent}>
       {lines.map((l, i) => (
         <span key={i} className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
           <motion.span
             className="block"
-            initial={{ y: "110%" }}
-            {...(inView ? { whileInView: { y: 0 }, viewport: { once: true, margin: "0px 0px -6% 0px" } } : { animate: { y: 0 } })}
-            transition={{ duration: 1.1, delay: delay + i * 0.11, ease: EASE }}
+            variants={{ hidden: { y: "110%" }, show: { y: 0, transition: { duration: 1.1, delay: delay + i * 0.11, ease: EASE } } }}
           >
             {l}
           </motion.span>
@@ -67,7 +68,7 @@ export function Eyebrow({ children, className = "" }: { children: React.ReactNod
 
 export function TodoTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-[0.68rem] font-medium uppercase tracking-wider text-amber-900 align-middle">
+    <span className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-[0.8rem] font-medium uppercase tracking-wider text-amber-900 align-middle">
       {children}
     </span>
   );

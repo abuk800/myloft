@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
@@ -11,12 +11,11 @@ const serif = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const sans = Inter({
-  variable: "--font-inter",
+const sans = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });

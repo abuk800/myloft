@@ -31,13 +31,13 @@ export default function Vouchers() {
   const Card = (
     <motion.div
       layout
-      className="relative aspect-[1.6/1] w-full overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#f6efe2] via-[#efe5d1] to-[#e3d3b4] p-6 text-ink shadow-[0_40px_80px_-30px_rgba(60,40,10,0.45)] md:p-9"
+      className="relative aspect-[1.6/1] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#f6efe2] via-[#efe5d1] to-[#e3d3b4] p-6 text-ink shadow-[0_40px_80px_-30px_rgba(60,40,10,0.45)] md:p-9"
     >
       <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/40 blur-2xl" />
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-start justify-between">
           <Logo />
-          <span className="eyebrow !text-[0.55rem] opacity-60">Gutschein</span>
+          <span className="eyebrow !text-[0.78rem] opacity-60">Gutschein</span>
         </div>
         <div>
           <AnimatePresence mode="popLayout">
@@ -45,9 +45,9 @@ export default function Vouchers() {
               {title}
             </motion.p>
           </AnimatePresence>
-          <p className="mt-2 text-xs opacity-70 md:text-sm">{sub}</p>
+          <p className="mt-2 text-sm opacity-70 md:text-sm">{sub}</p>
         </div>
-        <div className="flex items-end justify-between gap-4 text-[0.7rem] md:text-xs">
+        <div className="flex items-end justify-between gap-4 text-[0.8rem] md:text-sm">
           <div className="min-w-0">
             {to && <p className="truncate">Für <strong className="font-medium">{to}</strong></p>}
             {from && <p className="truncate opacity-70">Von {from}</p>}
@@ -70,31 +70,30 @@ export default function Vouchers() {
           <a href={waLink(WA.gutschein)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white">Rückfrage auf WhatsApp</a>
           <Link href="/" className="btn btn-line">Zur Startseite</Link>
         </div>
-        <p className="mt-8 text-xs text-ink-soft">Demo-Modus: Es wurde nichts gekauft und keine Zahlung ausgelöst.</p>
+        <p className="mt-8 text-sm text-ink-soft">Demo-Modus: Es wurde nichts gekauft und keine Zahlung ausgelöst.</p>
       </div>
     );
   }
 
   return (
     <div className="mx-auto max-w-6xl px-5 pb-28 pt-28 md:px-10 md:pt-36">
-      <p className="eyebrow text-ink-soft">Gutscheine</p>
       <h1 className="display mt-4 max-w-3xl text-[3rem] md:text-7xl">Shooting <em>verschenken.</em></h1>
       <p className="mt-5 max-w-lg text-ink-soft">Ein Geschenk für Besties, Familie oder Team. Perfekt vor Weihnachten, aber das ganze Jahr passend.</p>
 
       <div className="mt-12 grid gap-10 md:grid-cols-12 md:gap-14">
         <div className="md:order-2 md:col-span-6">
-          <div className="md:sticky md:top-28">{Card}<p className="mt-4 text-center text-xs text-ink-soft">Live-Vorschau deines Gutscheins</p></div>
+          <div className="md:sticky md:top-28">{Card}<p className="mt-4 text-center text-sm text-ink-soft">Live-Vorschau deines Gutscheins</p></div>
         </div>
 
         <div className="space-y-8 md:order-1 md:col-span-6">
           <div className="grid grid-cols-2 gap-1 rounded-full bg-cream/70 p-1">
             {([["paket", "Paket-Gutschein"], ["wert", "Wertgutschein"]] as const).map(([k, l]) => (
-              <button key={k} onClick={() => setKind(k)} className={`eyebrow rounded-full py-3.5 !text-[0.62rem] transition-all duration-400 ${kind === k ? "bg-ink text-white" : ""}`}>{l}</button>
+              <button key={k} onClick={() => setKind(k)} className={`eyebrow rounded-full py-3.5 !text-[0.78rem] transition-all duration-400 ${kind === k ? "bg-ink text-white" : ""}`}>{l}</button>
             ))}
           </div>
 
           <div>
-            <p className="eyebrow !text-[0.6rem] text-ink-soft">{kind === "paket" ? "Paket" : "Wert"}</p>
+            <p className="eyebrow !text-[0.78rem] text-ink-soft">{kind === "paket" ? "Paket" : "Wert"}</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {kind === "paket"
                 ? PACKAGES.map((x) => (
@@ -110,11 +109,11 @@ export default function Vouchers() {
           </div>
 
           <div className="space-y-3">
-            <label className="block"><span className="eyebrow !text-[0.6rem] text-ink-soft">Für</span>
+            <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Für</span>
               <input value={to} onChange={(e) => setTo(e.target.value)} maxLength={28} placeholder="Name der beschenkten Person" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
-            <label className="block"><span className="eyebrow !text-[0.6rem] text-ink-soft">Von</span>
+            <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Von</span>
               <input value={from} onChange={(e) => setFrom(e.target.value)} maxLength={28} placeholder="Dein Name" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
-            <label className="block"><span className="eyebrow !text-[0.6rem] text-ink-soft">Nachricht</span>
+            <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Nachricht</span>
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={3} maxLength={140} className="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-ink" /></label>
           </div>
 
@@ -123,7 +122,7 @@ export default function Vouchers() {
             <span className="display text-5xl">{eur(amount)}</span>
           </div>
           <button onClick={() => setBought(true)} className="btn btn-dark w-full">Gutschein kaufen</button>
-          <p className="text-xs text-ink-soft">Zustellung als PDF mit Code per E-Mail. Gültigkeit und Einlöseregeln: TODO. Kontakt: {SITE.email}</p>
+          <p className="text-sm text-ink-soft">Zustellung als PDF mit Code per E-Mail. Gültigkeit und Einlöseregeln: TODO. Kontakt: {SITE.email}</p>
         </div>
       </div>
     </div>

@@ -8,7 +8,6 @@ import { SITE } from "@/lib/config";
 import type { ImgKey } from "@/lib/images";
 
 const SLIDES: ImgKey[] = ["sofaLounge", "stairsWhite", "studioCyc", "tableWhite"];
-const LABELS = ["Sofa-Ecke", "Treppe", "White Set", "Event-Tafel"];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -43,20 +42,11 @@ export default function Hero() {
       </motion.div>
 
       <motion.div style={{ opacity: fade }} className="mx-auto flex min-h-[100svh] max-w-[88rem] flex-col justify-end px-5 pb-24 pt-24 md:px-10 md:pb-20">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.9, ease: EASE }}
-          className="eyebrow mb-4 text-white/80 max-md:!text-[0.62rem] max-md:!tracking-[0.24em]"
-        >
-          Fotostudio · Content · Events · Oberursel bei Frankfurt
-        </motion.p>
-
         <Lines
           as="h1"
           inView={false}
           delay={0.45}
-          className="display max-w-5xl text-[2.75rem] leading-[1] sm:text-7xl md:text-[6.6rem]"
+          className="display max-w-5xl text-[2.6rem] leading-[1.02] sm:text-6xl md:text-[5rem]"
           lines={["Dein Studio in Frankfurt.", <em key="b">Für Shootings, Content</em>, "und Events."]}
         />
 
@@ -90,18 +80,6 @@ export default function Hero() {
             <span aria-hidden>·</span> <span>{SITE.google.count} Bewertungen</span>
             <span aria-hidden>·</span> <span>{SITE.hoursShort}</span>
           </p>
-          <div className="hidden items-center gap-3 md:flex" aria-hidden>
-            {LABELS.map((l, n) => (
-              <button
-                key={l}
-                tabIndex={-1}
-                onClick={() => setI(n)}
-                className={`eyebrow !text-[0.62rem] transition-opacity ${n === i ? "opacity-100" : "opacity-45 hover:opacity-80"}`}
-              >
-                {String(n + 1).padStart(2, "0")} {l}
-              </button>
-            ))}
-          </div>
         </motion.div>
 
         <div className="mt-4 flex gap-1.5 md:hidden" aria-hidden>
