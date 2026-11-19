@@ -23,23 +23,49 @@ export default function Loop({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches || nav.connection?.saveData;
     if (reduce) { setBlocked(true); return; }
 
-    // Start erst nach Load + kurzer Pause, damit das Poster (nicht das erste Videobild) der LCP bleibt.
+    // iOS/Safari: Autoplay nur mit gesetztem muted-Attribut + playsinline (React setzt muted nur als Property).
+    vid.muted = true;
+    vid.defaultMuted = true;
+    vid.setAttribute("muted", "");
+    vid.setAttribute("playsinline", "");
+    vid.setAttribute("webkit-playsinline", "");
+
+    let visible = false;
+    const tryPlay = () => {
+      if (!visible || !vid.paused) return;
+      vid.play().then(() => { setPlaying(true); setBlocked(false); }).catch(() => setBlocked(true));
+    };
+
+    // Start kurz nach Load, damit das Poster (nicht das erste Videobild) der LCP bleibt.
     let io: IntersectionObserver | undefined;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const start = () => {
       io = new IntersectionObserver(
         ([e]) => {
-          if (e.isIntersecting) vid.play().then(() => setPlaying(true)).catch(() => setBlocked(true));
+          visible = e.isIntersecting;
+          if (visible) tryPlay();
           else { vid.pause(); setPlaying(false); }
         },
-        { threshold: 0.35 },
+        { threshold: 0.25 },
       );
       io.observe(vid);
     };
-    const arm = () => { timer = setTimeout(start, eager ? 0 : 4000); };
+    // Falls der Browser Autoplay erst nach einer Geste erlaubt (Stromsparmodus): bei erster Berührung erneut versuchen.
+    const retry = () => tryPlay();
+    const onVis = () => { if (!document.hidden) tryPlay(); };
+    const arm = () => { timer = setTimeout(start, eager ? 0 : 800); };
     if (document.readyState === "complete") arm();
     else window.addEventListener("load", arm, { once: true });
-    return () => { window.removeEventListener("load", arm); clearTimeout(timer); io?.disconnect(); };
+    window.addEventListener("touchstart", retry, { passive: true });
+    window.addEventListener("scroll", retry, { passive: true, once: true });
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      window.removeEventListener("load", arm);
+      window.removeEventListener("touchstart", retry);
+      window.removeEventListener("scroll", retry);
+      document.removeEventListener("visibilitychange", onVis);
+      clearTimeout(timer); io?.disconnect();
+    };
   }, [eager]);
 
   const toggle = () => {
@@ -62,8 +88,8 @@ export default function Loop({
         preload="none"
         aria-label={label ?? VIDEO[v].label}
       >
-        <source src={`${base}.webm`} type="video/webm" />
         <source src={`${base}.mp4`} type="video/mp4" />
+        <source src={`${base}.webm`} type="video/webm" />
       </video>
       {controls && (
         <button
