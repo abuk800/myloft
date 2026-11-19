@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import RoomShowcase from "@/components/home/RoomShowcase";
 import SetExplorer from "@/components/home/SetExplorer";
 import Packages from "@/components/home/Packages";
 import Reviews from "@/components/home/Reviews";
@@ -45,6 +46,7 @@ export default function StudioPage() {
         </div>
       </section>
 
+      <RoomShowcase />
       <SetExplorer />
       <div id="pakete" className="scroll-mt-16"><Packages /></div>
 

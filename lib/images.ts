@@ -1,7 +1,7 @@
 /**
  * Zentrale Bildverwaltung.
- * Alle Bilder sind Unsplash-Platzhalter, die dem echten Raum nahekommen.
- * Zum Austausch gegen echte Studiofotos: nur die Werte hier ändern
+ * Echte Studiofotos liegen in public/studio, der Rest sind Unsplash-Platzhalter (Schlüssel ph…).
+ * Zum Austausch: nur die Werte hier ändern
  * (entweder eine Unsplash-ID oder eine komplette https-URL / lokaler Pfad wie "/studio/treppe.jpg").
  */
 
@@ -17,6 +17,30 @@ export function src(img: Img | string, w = 1200): string {
 }
 
 export const IMG = {
+  // ── Echte Studiofotos, hohe Auflösung (public/studio), nach Qualität sortiert ──
+  roomLogo: { id: "/studio/raum-logo-weihnachten.jpg", alt: "MYLOFT STUDIO: Logo-Wand, Weihnachtsbaum, rote Vorhänge, Bouclé-Sofas und weißes Set mit Softbox" },
+  roomCurtain: { id: "/studio/raum-roter-vorhang.jpg", alt: "Weihnachts-Set mit rotem Vorhang, Baum und Bouclé-Sofas vor der MYLOFT-Logo-Wand" },
+  roomTree: { id: "/studio/raum-baum-vordergrund.jpg", alt: "Studio-Halle mit Weihnachtsbaum, Empore, Sofa-Ecke und Studiolicht" },
+  roomMezzanine: { id: "/studio/raum-empore-sofas.jpg", alt: "Blick in die Studio-Halle mit Empore, Weihnachts-Set und Sofa-Ecke" },
+  roomSoftbox: { id: "/studio/raum-softbox-sofas.jpg", alt: "Studio mit Softbox, Bouclé-Sofa und weißem Hohlkehlen-Set" },
+  familyWall: { id: "/studio/familie-logo-wand.jpg", alt: "Familie sitzt auf den cremefarbenen Bouclé-Sofas vor der MYLOFT-STUDIO-Wand" },
+  hairModel: { id: "/studio/produkt-haarmarke-model.jpg", alt: "Produkt-Shooting: Model neben Kleiderständer mit Haarverlängerungen vor grauem Hintergrund" },
+  btsSoftbox: { id: "/studio/bts-softbox-weisses-set.jpg", alt: "Behind the Scenes: Shooting auf dem weißen Set mit Softbox und Monitor" },
+  hairSofa: { id: "/studio/produkt-haare-boucle-sofa.jpg", alt: "Vier glatte Haarsträhnen über der Lehne eines cremefarbenen Bouclé-Sofas" },
+  kidCube: { id: "/studio/kind-auf-wuerfel-weisses-set.jpg", alt: "Kinder-Shooting auf weißem Würfel vor der Hohlkehle, Fotograf im Vordergrund" },
+  meteGimbal: { id: "/studio/mete.jpg", alt: "Mete, Inhaber von MYLOFT STUDIO, mit Kamera-Gimbal" },
+
+  // ── Echte Shootings (kleine Screenshots, nur für kleine Kacheln) ──
+  shotStairs: { id: "/studio/shots/treppe-gelaender.jpg", alt: "Model auf der offenen Treppe mit Metallgeländer im Studio" },
+  shotCube: { id: "/studio/shots/wuerfel-spotlight.jpg", alt: "Model auf weißem Würfel im Spotlight" },
+  shotSofaChair: { id: "/studio/shots/sofa-sessel.jpg", alt: "Frau sitzt auf dem cremefarbenen Sessel vor weißem Hintergrund" },
+  shotPregnant: { id: "/studio/shots/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid" },
+  shotPet: { id: "/studio/shots/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
+  shotBW: { id: "/studio/shots/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
+  shotSport: { id: "/studio/shots/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
+  shotMasterclass: { id: "/studio/shots/masterclass-gruppe.jpg", alt: "Gruppenfoto bei der Make-up-Masterclass im Studio" },
+  shotChairs: { id: "/studio/shots/chiavari-stuehle.jpg", alt: "Weiße Chiavari-Stühle an gedeckter Tafel beim Workshop" },
+
   // ── Platzhalter mit Stimmung der echten Studiofotos ─────
   // (echte Fotos später hier eintragen, z. B. "/studio/treppe.jpg")
   phStairs: { id: "1761164920810-25031499d736", alt: "Frau im schwarzen Kleid sitzt auf Treppe mit Geländer" },

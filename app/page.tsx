@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/home/Hero";
 import Occasions from "@/components/home/Occasions";
+import RoomShowcase from "@/components/home/RoomShowcase";
 import SetExplorer from "@/components/home/SetExplorer";
 import Packages from "@/components/home/Packages";
 import EventTeaser from "@/components/home/EventTeaser";
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <Hero />
       <Occasions />
+      <RoomShowcase />
       <SetExplorer />
       <Packages compact />
       <EventTeaser />

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lines, Photo, Reveal, TodoTag } from "../ui";
+import { Lines, Photo, Reveal } from "../ui";
 import { SITE } from "@/lib/config";
 
 export default function About() {
@@ -10,11 +10,9 @@ export default function About() {
       <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
         <Reveal className="relative md:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
-            <Photo k="phCreator" pos="50% 30%" sizes="(min-width:768px) 40vw, 100vw" w={1400} />
+            <Photo k="meteGimbal" pos="55% 12%" sizes="(min-width:768px) 40vw, 100vw" w={1400} />
           </div>
-          <span className="absolute bottom-4 left-4 rounded-full bg-white px-3 py-1.5 text-[0.8rem] text-ink-soft">
-            <TodoTag>TODO</TodoTag> Foto von {SITE.owner}
-          </span>
+          <p className="mt-3 text-sm text-ink-soft">{SITE.owner}, Inhaber von {SITE.fullName}</p>
         </Reveal>
 
         <div className="md:col-span-7">
