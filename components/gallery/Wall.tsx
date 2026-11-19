@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { X } from "lucide-react";
 import { EASE, Photo } from "../shared";
 import { CAM_FILTERS, CAM_ITEMS, type CamFilter } from "@/lib/cam";

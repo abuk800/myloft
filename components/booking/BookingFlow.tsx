@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Check, Minus, Plus } from "lucide-react";
 import { StepBody, StepHeader } from "../Stepper";
 import { EASE, Photo, WhatsAppIcon } from "../shared";

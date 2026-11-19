@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ImagePlus, X } from "lucide-react";
 import { EASE, GoogleG } from "../shared";
 import { SITE } from "@/lib/config";

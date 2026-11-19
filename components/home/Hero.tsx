@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, m as motion, useScroll, useTransform } from "framer-motion";
 import { Photo, Lines, EASE, Stars } from "../shared";
 import Image from "next/image";
 import Loop from "../Loop";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import Link from "next/link";
 import { Lines, Photo, EASE, ArrowLink } from "../shared";
 import { SETS } from "@/lib/config";

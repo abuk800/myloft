@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { m as motion, type HTMLMotionProps } from "framer-motion";
 import {
   Armchair, Bath, Building2, Camera, CookingPot, HardDrive, Layers, Lightbulb, Shirt, Sparkles, SprayCan, Table2, type LucideIcon,
 } from "lucide-react";

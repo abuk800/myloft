@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { EASE, WhatsAppIcon } from "../shared";
 import { OPEN } from "@/lib/content";
 import { WA, waLink } from "@/lib/config";

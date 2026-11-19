@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Ico, Lines, Photo, Reveal } from "../shared";
 import { EVENT } from "@/lib/config";
