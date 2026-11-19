@@ -9,8 +9,8 @@ import { VIDEO, type VideoKey } from "@/lib/images";
  * bleibt bei "weniger Bewegung" oder Datensparmodus auf dem Poster und hat einen Play/Pause-Knopf.
  */
 export default function Loop({
-  v, className = "", controls = true, label, style,
-}: { v: VideoKey; className?: string; controls?: boolean; label?: string; style?: React.CSSProperties }) {
+  v, className = "", controls = true, label, style, eager = false,
+}: { v: VideoKey; className?: string; controls?: boolean; label?: string; style?: React.CSSProperties; eager?: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
@@ -36,11 +36,11 @@ export default function Loop({
       );
       io.observe(vid);
     };
-    const arm = () => { timer = setTimeout(start, 4000); };
+    const arm = () => { timer = setTimeout(start, eager ? 0 : 4000); };
     if (document.readyState === "complete") arm();
     else window.addEventListener("load", arm, { once: true });
     return () => { window.removeEventListener("load", arm); clearTimeout(timer); io?.disconnect(); };
-  }, []);
+  }, [eager]);
 
   const toggle = () => {
     const vid = ref.current;

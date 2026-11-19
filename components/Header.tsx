@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, m as motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Logo, EASE } from "./shared";
-import { NAV, SITE } from "@/lib/config";
+import { Logo, EASE, InstagramIcon, WhatsAppIcon } from "./shared";
+import { NAV, SITE, waLink } from "@/lib/config";
 
 // Seiten mit vollflächigem Hero: Header startet transparent mit heller Schrift
 const isImageHero = (p: string) =>
@@ -44,15 +44,15 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          light ? "bg-transparent text-white" : dark && !open ? "bg-night text-white shadow-[0_1px_0_rgba(255,255,255,0.08)]" : "bg-paper text-ink shadow-[0_1px_0_var(--line)]"
+          light ? "bg-transparent text-white" : dark && !open ? "bg-night text-white shadow-[0_1px_0_rgba(255,255,255,0.08)]" : "bg-paper/95 text-ink shadow-[0_1px_0_var(--line)] backdrop-blur-md"
         }`}
       >
-        <div className="mx-auto flex h-[4.25rem] max-w-[88rem] items-center justify-between px-5 md:h-20 md:px-10">
+        <div className="mx-auto grid h-[4.25rem] max-w-[96rem] grid-cols-[1fr_auto] items-center px-5 md:h-20 md:px-10 lg:grid-cols-[1fr_auto_1fr] xl:px-14">
           <Link href="/" aria-label="MYLOFT STUDIO Startseite" onClick={close} className="relative z-[60]">
             <Logo light={light || (dark && !open)} />
           </Link>
 
-          <nav className="hidden items-center gap-9 lg:flex" aria-label="Hauptnavigation">
+          <nav className="hidden items-center gap-8 lg:flex xl:gap-11" aria-label="Hauptnavigation">
             {NAV.map((n) => (
               <Link key={n.href} href={n.href} className="group relative text-[0.8rem] font-medium uppercase tracking-[0.2em]">
                 {n.label}
@@ -61,7 +61,9 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-self-end gap-2 xl:gap-3">
+            <a href={SITE.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hidden h-11 w-11 place-items-center rounded-full transition-colors hover:bg-current/10 lg:grid"><InstagramIcon /></a>
+            <a href={waLink("Hallo MYLOFT STUDIO, ich habe eine Frage.")} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hidden h-11 w-11 place-items-center rounded-full transition-colors hover:bg-current/10 lg:grid"><WhatsAppIcon className="h-5 w-5" /></a>
             <Link
               href="/buchen"
               className={`btn hidden !min-h-11 !px-6 md:inline-flex ${light || dark ? "btn-light" : "btn-dark"}`}

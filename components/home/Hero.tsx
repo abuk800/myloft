@@ -1,39 +1,18 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, m as motion, useScroll, useTransform } from "framer-motion";
-import { Photo, Lines, EASE, Stars } from "../shared";
+import { Lines, Stars } from "../shared";
 import Image from "next/image";
 import Loop from "../Loop";
 import { SITE } from "@/lib/config";
-import { VIDEO, type ImgKey } from "@/lib/images";
-
-// Desktop: wechselnde Raumaufnahmen in der großen Karte
-const SLIDES: { k: ImgKey; pos?: string }[] = [
-  { k: "roomLogo" },
-  { k: "roomMezzanine" },
-];
+import { VIDEO } from "@/lib/images";
 
 /**
  * Handy: Vollbild-Video, deutlich abgedunkelt, damit weiße Schrift über jedem Frame mindestens 4,5:1 erreicht
  * (Verlauf unten am stärksten, zusätzlich brightness/saturate auf dem Video).
- * Desktop: Text steht auf der dunklen Fläche, Video und Foto liegen daneben (kein Text über Video).
+ * Desktop: Video läuft dauerhaft als Hintergrund rechts, links liegt ein dunkler Verlauf unter dem Text.
  */
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const [i, setI] = useState(0);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yA = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
-  const yB = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-
-  useEffect(() => {
-    const t = setInterval(() => setI((p) => (p + 1) % SLIDES.length), 5600);
-    return () => clearInterval(t);
-  }, []);
-
   return (
-    <section ref={ref} className="relative isolate min-h-[100svh] overflow-hidden bg-night text-white">
+    <section className="relative isolate min-h-[100svh] overflow-hidden bg-night text-white">
       {/* Poster des Hero-Videos früh laden (nur Handy) */}
       <link rel="preload" as="image" href={`${VIDEO.hero.base}.jpg`} media="(max-width: 1023px)" fetchPriority="high" />
 
@@ -46,6 +25,15 @@ export default function Hero() {
           className="absolute inset-0"
           style={{ background: "linear-gradient(to top, rgba(0,0,0,.70) 0%, rgba(0,0,0,.58) 50%, rgba(0,0,0,.32) 100%)" }}
         />
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-[5] hidden h-40 lg:block" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,.5), transparent)" }} aria-hidden />
+
+      {/* Desktop: Video läuft dauerhaft im Hintergrund (rechte Seite, Kante zu Kante), Text links auf dunklem Verlauf */}
+      <div className="absolute inset-y-0 right-0 -z-10 hidden w-[68%] lg:block" aria-hidden>
+        <Image src={`${VIDEO.hero.base}.jpg`} alt="" fill unoptimized sizes="68vw" className="object-cover" style={{ filter: "brightness(.85) saturate(.95)" }} />
+        <Loop v="hero" eager controls={false} className="h-full w-full" label="Studio in Farbe: Hintergründe und Licht" style={{ filter: "brightness(.85) saturate(.95)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #15100c 0%, rgba(21,16,12,.82) 22%, rgba(21,16,12,.25) 60%, rgba(21,16,12,.1) 100%)" }} />
       </div>
 
       <div className="mx-auto grid min-h-[100svh] max-w-[88rem] items-center px-5 md:px-10 lg:grid-cols-12 lg:gap-12">
@@ -75,35 +63,6 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Desktop: große Raumkarte + überlappende Video-Karte */}
-        <div className="relative hidden lg:col-span-6 lg:block">
-          <div className="relative ml-auto h-[40rem] w-full max-w-[40rem]">
-            <motion.div style={{ y: yA }} className="absolute right-0 top-0 h-[84%] w-[84%] overflow-hidden rounded-2xl bg-night-2">
-              <AnimatePresence initial={false}>
-                <motion.div
-                  key={i}
-                  className="absolute inset-0"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.4, ease: "easeInOut" }}
-                >
-                  <div data-kenburns className="absolute inset-0" style={{ animation: "kenburns 9s ease-out forwards" }}>
-                    <Photo k={SLIDES[i].k} pos={SLIDES[i].pos} priority={i === 0} sizes="40vw" w={1600} />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-
-            <motion.div
-              style={{ y: yB }}
-              transition={{ duration: 1.1, ease: EASE }}
-              className="absolute bottom-0 left-0 w-[40%] overflow-hidden rounded-2xl border-[6px] border-night bg-night-2"
-            >
-              <Loop v="hero" className="aspect-[2/3]" label="Studio in Farbe: Hintergründe und Licht" />
-            </motion.div>
-          </div>
-        </div>
       </div>
     </section>
   );

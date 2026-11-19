@@ -28,6 +28,15 @@
   --color-night-2: var(--night-2);
   --font-serif: var(--font-cormorant), "Times New Roman", serif;
   --font-sans: var(--font-manrope), system-ui, sans-serif;
+  /* shadcn-Tokens auf die Marken-Farben gemappt */
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: #ffffff;
+  --color-card-foreground: var(--ink);
+  --color-border: var(--line);
+  --color-muted-foreground: var(--ink-soft);
+  --animate-marquee: marquee var(--duration, 40s) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 40s) linear infinite;
 }
 
 html {
@@ -169,23 +178,19 @@ body {
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap, 1rem))); }
 }
-
-.marquee {
-  animation: marquee 38s linear infinite;
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap, 1rem))); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .marquee,
+  [class*="animate-marquee"],
   [data-kenburns] {
     animation: none !important;
   }

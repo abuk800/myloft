@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { GoogleG, Lines, Reveal, Stars } from "../shared";
+import TestimonialMarquee from "@/components/ui/marquee-01";
 import { REVIEWS, SITE } from "@/lib/config";
 
 /**
@@ -29,7 +30,7 @@ export default function Reviews({ exclude = [] }: { exclude?: string[] }) {
   };
 
   return (
-    <section className="py-14 md:py-28" aria-roledescription="Karussell" aria-label="Google-Bewertungen">
+    <section className="py-14 md:py-28" aria-label="Google-Bewertungen">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end md:gap-8">
           <Lines className="display text-[2.3rem] leading-[1.05] md:text-7xl" lines={["5,0 Sterne aus 23 Bewertungen"]} />
@@ -46,13 +47,13 @@ export default function Reviews({ exclude = [] }: { exclude?: string[] }) {
       <div
         ref={scroller}
         onScroll={onScroll}
-        className="no-scrollbar mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 md:mt-14 md:scroll-px-10 md:px-10 md:[padding-inline:max(2.5rem,calc((100vw-88rem)/2+2.5rem))]"
+        className="no-scrollbar mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 md:hidden"
       >
         {items.map((r, i) => (
           <figure
             key={r.name}
             aria-label={`Bewertung ${i + 1} von ${items.length}`}
-            className="flex w-[78vw] max-w-[22rem] shrink-0 snap-start flex-col justify-between rounded-2xl border border-line bg-white p-6 md:w-[22rem] md:p-8"
+            className="flex w-[78vw] max-w-[22rem] shrink-0 snap-start flex-col justify-between rounded-2xl border border-line bg-white p-6"
           >
             <div>
               <Stars />
@@ -68,6 +69,11 @@ export default function Reviews({ exclude = [] }: { exclude?: string[] }) {
           </figure>
         ))}
         <div className="w-px shrink-0" aria-hidden />
+      </div>
+
+      {/* Desktop: Endlos-Laufband, pausiert bei Hover */}
+      <div className="mt-14 hidden md:block">
+        <TestimonialMarquee reviews={items.map((r) => ({ name: r.name, username: "Google-Bewertung", body: r.text }))} />
       </div>
 
       <div className="mx-auto mt-4 flex max-w-[88rem] items-center justify-between px-5 md:hidden">
