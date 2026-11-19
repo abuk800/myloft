@@ -6,7 +6,7 @@ import { SITE } from "@/lib/config";
 
 export default function About() {
   return (
-    <section className="mx-auto max-w-[88rem] px-5 py-24 md:px-10 md:py-36">
+    <section className="mx-auto max-w-[88rem] px-5 py-14 md:px-10 md:py-36">
       <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
         <Reveal className="relative md:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
@@ -22,8 +22,8 @@ export default function About() {
               {SITE.owner} ist der Inhaber von MYLOFT STUDIO. In den Google-Bewertungen wird er immer wieder genannt: herzlich, hilfsbereit, er nimmt sich Zeit. Bei uns muss niemand Profi sein. <strong className="font-semibold text-ink">A place for everyone.</strong>
             </p>
             <figure className="mt-12 max-w-xl">
-              <blockquote className="font-serif text-3xl leading-tight md:text-4xl">„Der Inhaber ist unglaublich sympathisch und herzlich.“</blockquote>
-              <figcaption className="mt-3 text-sm text-ink-soft">Chrisa MO · Google-Bewertung ★★★★★</figcaption>
+              <blockquote className="font-serif text-3xl leading-tight md:text-4xl">„Man fühlt sich direkt wohl und herzlich willkommen.“</blockquote>
+              <figcaption className="mt-3 text-sm text-ink-soft">Cia Mehr · Google-Bewertung ★★★★★</figcaption>
             </figure>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/buchen" className="btn btn-dark">Studio buchen</Link>

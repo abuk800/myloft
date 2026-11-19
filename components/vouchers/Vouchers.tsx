@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Gift } from "lucide-react";
 import { EASE, Logo } from "../shared";
 import { PACKAGES, SITE, VOUCHER_VALUES, WA, eur, waLink } from "@/lib/config";
+import { OPEN } from "@/lib/content";
 
 type Kind = "wert" | "paket";
 
@@ -67,7 +68,7 @@ export default function Vouchers() {
         <p className="mt-4 text-ink-soft">Der Gutschein kommt als PDF mit Code per Mail.</p>
         <div className="mt-10">{Card}</div>
         <div className="mt-8 flex flex-col gap-3">
-          <a href={waLink(WA.gutschein)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white">Rückfrage auf WhatsApp</a>
+          <a href={waLink(WA.gutschein)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-ink">Rückfrage auf WhatsApp</a>
           <Link href="/" className="btn btn-line">Zur Startseite</Link>
         </div>
         <p className="mt-8 text-sm text-ink-soft">Demo-Modus: Es wurde nichts gekauft und keine Zahlung ausgelöst.</p>
@@ -88,7 +89,7 @@ export default function Vouchers() {
         <div className="space-y-8 md:order-1 md:col-span-6">
           <div className="grid grid-cols-2 gap-1 rounded-full bg-cream/70 p-1">
             {([["paket", "Paket-Gutschein"], ["wert", "Wertgutschein"]] as const).map(([k, l]) => (
-              <button key={k} onClick={() => setKind(k)} className={`eyebrow rounded-full py-3.5 !text-[0.78rem] transition-all duration-400 ${kind === k ? "bg-ink text-white" : ""}`}>{l}</button>
+              <button key={k} onClick={() => setKind(k)} className={`eyebrow min-h-11 rounded-full py-3.5 !text-[0.78rem] transition-all duration-400 ${kind === k ? "bg-ink text-white" : ""}`}>{l}</button>
             ))}
           </div>
 
@@ -110,11 +111,11 @@ export default function Vouchers() {
 
           <div className="space-y-3">
             <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Für</span>
-              <input value={to} onChange={(e) => setTo(e.target.value)} maxLength={28} placeholder="Name der beschenkten Person" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
+              <input value={to} onChange={(e) => setTo(e.target.value)} maxLength={28} placeholder="Name der beschenkten Person" autoComplete="off" inputMode="text" className="mt-2 h-14 w-full text-base rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
             <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Von</span>
-              <input value={from} onChange={(e) => setFrom(e.target.value)} maxLength={28} placeholder="Dein Name" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
+              <input value={from} onChange={(e) => setFrom(e.target.value)} maxLength={28} placeholder="Dein Name" autoComplete="name" inputMode="text" className="mt-2 h-14 w-full text-base rounded-xl border border-line bg-white px-4 outline-none focus:border-ink" /></label>
             <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Nachricht</span>
-              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={3} maxLength={140} className="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-ink" /></label>
+              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={3} maxLength={140} className="mt-2 w-full text-base rounded-xl border border-line bg-white px-4 py-3 outline-none focus:border-ink" /></label>
           </div>
 
           <div className="flex items-end justify-between border-t border-line pt-6">
@@ -122,7 +123,7 @@ export default function Vouchers() {
             <span className="display text-5xl">{eur(amount)}</span>
           </div>
           <button onClick={() => setBought(true)} className="btn btn-dark w-full">Gutschein kaufen</button>
-          <p className="text-sm text-ink-soft">Zustellung als PDF mit Code per E-Mail. Gültigkeit und Einlöseregeln: TODO. Kontakt: {SITE.email}</p>
+          <p className="text-sm text-ink-soft">Zustellung als PDF mit Code per E-Mail.{OPEN.voucherTerms ? ` ${OPEN.voucherTerms}` : ""} Kontakt: {SITE.email}</p>
         </div>
       </div>
     </div>

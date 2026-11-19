@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Wall from "@/components/gallery/Wall";
-import InstagramGrid from "@/components/home/InstagramGrid";
+import Social from "@/components/home/Social";
 import CtaBand from "@/components/CtaBand";
 import { SITE } from "@/lib/config";
 
@@ -23,7 +23,7 @@ export default function GaleriePage() {
         <Wall />
       </section>
 
-      <InstagramGrid />
+      <Social />
       <CtaBand k="roomMezzanine" title={["Dein Bild", "an der Wand."]} primary={{ href: "/buchen", label: "Studio buchen" }} secondary={{ href: "/galerie/upload", label: "Bilder hochladen" }} />
     </>
   );

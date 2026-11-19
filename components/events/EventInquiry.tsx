@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { StepBody, StepHeader } from "../Stepper";
-import { EASE, TodoTag } from "../shared";
+import { EASE } from "../shared";
 import { EVENT_EXTRAS, EVENT_OCCASIONS, MAX_GUESTS } from "@/lib/config";
 
 const STEPS = ["Anlass", "Datum", "Gäste", "Extras", "Kontakt"];
@@ -81,7 +81,6 @@ export default function EventInquiry() {
                 aria-label="Gästezahl" className="mt-8 h-2 w-full cursor-pointer accent-[#e9d6a6]"
               />
               <div className="mt-2 flex justify-between text-sm text-white/70"><span>5</span><span>{MAX_GUESTS} Stühle vorhanden</span></div>
-              <p className="mt-6 text-sm text-white/70"><TodoTag>TODO</TodoTag> maximale Gästezahl bestätigen</p>
             </div>
           )}
 
@@ -113,10 +112,10 @@ export default function EventInquiry() {
               <div className="mt-8 space-y-4">
                 {([["name", "Name", "text", "name"], ["phone", "Telefon / WhatsApp", "tel", "tel"], ["email", "E-Mail", "email", "email"]] as const).map(([k, l, t, ac]) => (
                   <label key={k} className="block"><span className="eyebrow !text-[0.78rem] text-white/70">{l}</span>
-                    <input type={t} autoComplete={ac} value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} className={input} /></label>
+                    <input type={t} inputMode={t === "tel" ? "tel" : t === "email" ? "email" : "text"} autoComplete={ac} required={k !== "phone"} aria-required={k !== "phone"} value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} className={input} /></label>
                 ))}
                 <label className="block"><span className="eyebrow !text-[0.78rem] text-white/70">Nachricht (optional)</span>
-                  <textarea rows={4} value={f.msg} onChange={(e) => setF({ ...f, msg: e.target.value })} className={`${input} h-auto py-3`} /></label>
+                  <textarea rows={4} autoComplete="off" value={f.msg} onChange={(e) => setF({ ...f, msg: e.target.value })} className={`${input} h-auto py-3`} /></label>
               </div>
             </div>
           )}

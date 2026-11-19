@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
 import { SITE } from "@/lib/config";
+import { IS_DEMO, SITE_URL } from "@/lib/site";
 
 const serif = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -21,13 +22,14 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(SITE_URL),
+  robots: IS_DEMO ? { index: false, follow: false, nocache: true } : { index: true, follow: true },
   title: {
     default: "MYLOFT STUDIO | Fotostudio & Eventlocation in Oberursel bei Frankfurt",
     template: "%s | MYLOFT STUDIO",
   },
   description:
-    "Dein Studio in Frankfurt für Shootings, Content und Events. Zwei Etagen, Profi-Equipment inklusive. Ab 190 €. 5,0 ★ bei Google, täglich 7–24 Uhr.",
+    "Dein Studio bei Frankfurt für Shootings, Content und Events. Zwei Etagen, Profi-Equipment inklusive. Ab 190 €. 5,0 ★ bei Google, täglich 7–24 Uhr.",
   openGraph: {
     title: "MYLOFT STUDIO | Dein Studio. Deine Story.",
     description: "Fotostudio & Eventlocation in Oberursel bei Frankfurt. Zwei Etagen, Profi-Equipment inklusive.",
@@ -42,10 +44,37 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "PhotographyBusiness"],
+  name: SITE.fullName,
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph-image.png`,
+  telephone: SITE.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE.address.street,
+    postalCode: SITE.address.zip,
+    addressLocality: "Oberursel (Taunus)",
+    addressCountry: "DE",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "07:00",
+      closes: "24:00",
+    },
+  ],
+  sameAs: [SITE.instagram.url],
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de" className={`${serif.variable} ${sans.variable}`}>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Providers>
           <Header />
           <main className="min-h-screen pb-24 md:pb-0">{children}</main>

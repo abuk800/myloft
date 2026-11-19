@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { EASE, TodoTag, WhatsAppIcon } from "../shared";
+import { EASE, WhatsAppIcon } from "../shared";
+import { OPEN } from "@/lib/content";
 import { WA, waLink } from "@/lib/config";
 
 export default function Danke() {
@@ -27,7 +28,7 @@ export default function Danke() {
         </motion.h1>
         <p className="mt-5 text-white/70">
           Deine Anfrage für <strong className="font-medium text-white">{anlass}</strong>{date && <> am <strong className="font-medium text-white">{date}</strong></>} ist bei uns angekommen.
-          Antwort meist innerhalb von <TodoTag>X</TodoTag> Stunden.
+          {OPEN.responseTime ? ` Antwort meist innerhalb von ${OPEN.responseTime}.` : " Wir melden uns persönlich bei dir."}
         </p>
         <div className="mt-10 rounded-2xl border border-white/12 p-6 text-left text-sm text-white/70">
           <p className="eyebrow !text-[0.78rem] text-champagne">Und jetzt?</p>
@@ -38,7 +39,7 @@ export default function Danke() {
           </ol>
         </div>
         <div className="mt-8 flex flex-col gap-3">
-          <a href={waLink(msg || WA.events)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white"><WhatsAppIcon className="h-5 w-5" /> Schneller auf WhatsApp</a>
+          <a href={waLink(msg || WA.events)} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-ink"><WhatsAppIcon className="h-5 w-5" /> Schneller auf WhatsApp</a>
           <Link href="/" className="btn btn-line-light">Zur Startseite</Link>
         </div>
         <p className="mt-8 text-sm text-white/70">Demo-Modus: Es wurde keine E-Mail verschickt.</p>

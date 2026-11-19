@@ -40,12 +40,15 @@ export function Reveal({
 
 /** Headline, Zeile für Zeile aus einer Maske hochgeschoben. Trigger sitzt am (nicht geclippten) Heading. */
 export function Lines({
-  lines, className = "", delay = 0, as: Tag = "h2", inView = true,
-}: { lines: React.ReactNode[]; className?: string; delay?: number; as?: "h1" | "h2" | "h3"; inView?: boolean }) {
+  lines, className = "", delay = 0, as: Tag = "h2", inView = true, immediate = false,
+}: { lines: React.ReactNode[]; className?: string; delay?: number; as?: "h1" | "h2" | "h3"; inView?: boolean; immediate?: boolean }) {
   const M = motion[Tag];
-  const parent = inView
-    ? { initial: "hidden", whileInView: "show", viewport: { once: true, margin: "0px 0px -6% 0px" } }
-    : { initial: "hidden", animate: "show" };
+  // immediate: Überschrift im sichtbaren Bereich wird mit dem fertigen Zustand ausgeliefert (kein versteckter Server-HTML)
+  const parent = immediate
+    ? { initial: false as const, animate: "show" }
+    : inView
+      ? { initial: "hidden", whileInView: "show", viewport: { once: true, margin: "0px 0px -6% 0px" } }
+      : { initial: "hidden", animate: "show" };
   return (
     <M className={className} {...parent}>
       {lines.map((l, i) => (
@@ -64,14 +67,6 @@ export function Lines({
 
 export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <p className={`eyebrow ${className}`}>{children}</p>;
-}
-
-export function TodoTag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-[0.8rem] font-medium uppercase tracking-wider text-amber-900 align-middle">
-      {children}
-    </span>
-  );
 }
 
 const ICONS: Record<string, LucideIcon> = {

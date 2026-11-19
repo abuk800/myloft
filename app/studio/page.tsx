@@ -7,8 +7,9 @@ import Packages from "@/components/home/Packages";
 import Reviews from "@/components/home/Reviews";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
-import { Ico, Reveal, TodoTag } from "@/components/shared";
-import { FAQS, INCLUDED, EXTRAS, WA } from "@/lib/config";
+import { Ico, Reveal } from "@/components/shared";
+import { FAQS, INCLUDED, EXTRAS, WA, extraPrice } from "@/lib/config";
+import { OPEN } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Fotostudio mieten Frankfurt & Oberursel",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function StudioPage() {
   return (
     <>
-      <PageHero k="roomLogo" aspect="aspect-[4/3] lg:aspect-[4/5]" pos="42% 50%" eyebrow="Studio mieten" lines={["Dein Studio.", <em key="a">Deine Story.</em>]} sub="Zwei Etagen, Profi-Kamera und Licht inklusive. Slot wählen, buchen, kommen.">
+      <PageHero k="roomSoftbox" aspect="aspect-[4/3] lg:aspect-[4/5]" pos="42% 50%" eyebrow="Studio mieten" lines={["Dein Studio.", <em key="a">Deine Story.</em>]} sub="Zwei Etagen, Profi-Kamera und Licht inklusive. Slot wählen, buchen, kommen.">
         <Link href="/buchen" className="btn btn-light">Studio buchen</Link>
         <a href="#pakete" className="btn btn-line-light">Preise ansehen</a>
       </PageHero>
@@ -40,7 +41,7 @@ export default function StudioPage() {
               <p className="text-sm leading-relaxed text-ink-soft">
                 Der Raum: helles Loft auf zwei Ebenen mit weißen Wänden und weißem Boden-Set, offener Treppe mit schwarzen Stufen und Metallgeländer, Rundbogen-Tür, cremefarbenen Sofas und Sesseln, weißen Würfeln und Hockern, Studioblitzen und Softboxen. Dazu saisonale Sets.
               </p>
-              <p className="mt-3 text-sm text-ink-soft"><TodoTag>TODO</TodoTag> Quadratmeter beider Etagen ergänzen</p>
+              {OPEN.sqm && <p className="mt-3 text-sm text-ink-soft">Fläche beider Etagen: {OPEN.sqm}</p>}
             </Reveal>
           </div>
         </div>
@@ -58,7 +59,7 @@ export default function StudioPage() {
               <Reveal key={e.id} delay={i * 0.06}>
                 <div className="h-full rounded-xl bg-white p-5">
                   <p className="font-serif text-xl leading-tight">{e.label}</p>
-                  <p className="mt-3"><TodoTag>TODO: {e.note}</TodoTag></p>
+                  <p className="mt-3 text-sm text-ink-soft">{extraPrice(e.id)}</p>
                 </div>
               </Reveal>
             ))}
@@ -73,7 +74,7 @@ export default function StudioPage() {
         <div className="mt-10"><Faq items={FAQS} /></div>
       </section>
 
-      <CtaBand k="roomCurtain" title={["Such dir", "deinen Slot aus."]} wa={WA.studio} />
+      <CtaBand k="eventOpening" title={["Such dir", "deinen Slot aus."]} wa={WA.studio} />
     </>
   );
 }

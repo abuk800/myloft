@@ -3,8 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
-import { Ico, Photo, Reveal, TodoTag } from "@/components/shared";
+import { Ico, Photo, Reveal } from "@/components/shared";
 import { EVENT, OCCASIONS, WA } from "@/lib/config";
+import { OPEN } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Eventlocation Oberursel bei Frankfurt",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 const STEPS = [
   { n: "01", t: "Anfragen", d: "Anlass, Wunschdatum und Gästezahl in vier kurzen Schritten." },
-  { n: "02", t: "Wir melden uns", d: "Antwort meist innerhalb von X Stunden." },
+  { n: "02", t: "Wir melden uns", d: OPEN.responseTime ? `Antwort meist innerhalb von ${OPEN.responseTime}.` : "Wir melden uns persönlich bei dir, per WhatsApp, Telefon oder E-Mail." },
   { n: "03", t: "Feiern", d: "Du bringst die Gäste mit. Tische, Stühle und Küche sind bereit." },
 ];
 
@@ -37,7 +38,7 @@ export default function EventsPage() {
             <p className="max-w-md text-base leading-relaxed text-white/70">
               Inklusive Möbel, Küche, Getting-Ready-Room und Reinigung danach. Das Angebot gilt bis {EVENT.validUntil}.
             </p>
-            <p className="mt-4 text-sm text-white/70"><TodoTag>{EVENT.todo.price2027}</TodoTag></p>
+            {OPEN.price2027 && <p className="mt-4 text-sm text-white/70">Ab 2027: {OPEN.price2027}</p>}
             <Link href="/events/anfragen" className="btn btn-gold mt-8">Termin anfragen</Link>
           </Reveal>
         </div>
@@ -52,11 +53,14 @@ export default function EventsPage() {
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex flex-wrap gap-2 text-sm">
-          <TodoTag>{EVENT.todo.sqm}</TodoTag>
-          <TodoTag>{EVENT.todo.capacity}</TodoTag>
-          <TodoTag>{EVENT.todo.parking}</TodoTag>
-        </div>
+        {(OPEN.sqm || OPEN.maxGuests || OPEN.parking || OPEN.transit) && (
+          <dl className="mt-8 grid gap-4 text-sm text-white/80 sm:grid-cols-2">
+            {OPEN.sqm && <div><dt className="text-white/60">Fläche</dt><dd>{OPEN.sqm}</dd></div>}
+            {OPEN.maxGuests && <div><dt className="text-white/60">Gäste</dt><dd>{OPEN.maxGuests}</dd></div>}
+            {OPEN.parking && <div><dt className="text-white/60">Parken</dt><dd>{OPEN.parking}</dd></div>}
+            {OPEN.transit && <div><dt className="text-white/60">ÖPNV</dt><dd>{OPEN.transit}</dd></div>}
+          </dl>
+        )}
       </section>
 
       <section className="mx-auto max-w-[88rem] px-5 pb-24 md:px-10 md:pb-36">
@@ -76,9 +80,7 @@ export default function EventsPage() {
               <Reveal key={s.n} delay={i * 0.1}>
                 <p className="font-serif text-6xl text-champagne">{s.n}</p>
                 <p className="mt-4 font-serif text-3xl">{s.t}</p>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/60">
-                  {s.d.includes("X Stunden") ? <>Antwort meist innerhalb von <TodoTag>X</TodoTag> Stunden.</> : s.d}
-                </p>
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/70">{s.d}</p>
               </Reveal>
             ))}
           </div>
@@ -96,7 +98,7 @@ export default function EventsPage() {
           <Faq dark items={[
             { q: "Was kostet die Location?", a: "750 € ganztägig. Das Angebot gilt bis 31.12.2026." },
             { q: "Was ist alles enthalten?", a: "66 Stühle, 6 große Bankett-Tische, Tischdecken, Küche, zwei Toiletten, Getting-Ready-Room, zwei Stockwerke und die Reinigung danach." },
-            { q: "Wie viele Gäste passen rein?", a: "Es stehen 66 Stühle bereit. Die maximale Gästezahl stehend und sitzend ergänzen wir noch (TODO)." },
+            { q: "Wie viele Gäste passen rein?", a: OPEN.maxGuests ? `Es stehen 66 Stühle bereit. Maximal: ${OPEN.maxGuests}.` : "Es stehen 66 Stühle bereit. Die maximale Gästezahl nennen wir dir auf Anfrage." },
           ]} />
         </div>
       </section>

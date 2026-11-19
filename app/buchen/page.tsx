@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import BookingFlow from "@/components/booking/BookingFlow";
 
 export const metadata: Metadata = {
@@ -7,10 +6,9 @@ export const metadata: Metadata = {
   description: "Studio-Slot online buchen: Paket wählen, Termin aussuchen, fertig. Ab 190 € inklusive Profikamera und Dauerlicht.",
 };
 
-export default function BuchenPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen" />}>
-      <BookingFlow />
-    </Suspense>
-  );
+/** Das vorgewählte Paket (?paket=4h) wird serverseitig gelesen, die Seite wird nicht komplett im Browser gerendert. */
+export default async function BuchenPage({ searchParams }: { searchParams: Promise<{ paket?: string | string[] }> }) {
+  const sp = await searchParams;
+  const paket = Array.isArray(sp.paket) ? sp.paket[0] : sp.paket;
+  return <BookingFlow initialPackage={paket ?? null} />;
 }

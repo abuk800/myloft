@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type CSSProperties } from 'react';
+import Image from 'next/image';
 
 // ---------------------------------------------------------------------------
 // Props
@@ -118,12 +119,13 @@ export function ArchGallery({
               tabIndex={0}
               aria-label={entry.image.alt || `Photo ${index + 1}`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={entry.image.src}
                 alt={entry.image.alt || ''}
+                fill
+                sizes={`${Math.ceil(cardWidth * 1.5)}px`}
                 draggable={false}
-                className='pointer-events-none absolute inset-0 h-full w-full select-none object-cover'
+                className='pointer-events-none select-none object-cover'
               />
             </div>
           );

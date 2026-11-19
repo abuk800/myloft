@@ -31,7 +31,7 @@ export default function Wall() {
           <button
             key={x}
             onClick={() => setF(x)}
-            className={`eyebrow shrink-0 rounded-full border px-5 py-3 !text-[0.78rem] transition-all duration-300 ${f === x ? "border-ink bg-ink text-white" : "border-ink/20 hover:border-ink/50"}`}
+            className={`eyebrow min-h-11 shrink-0 rounded-full border px-5 py-3 !text-[0.78rem] transition-all duration-300 ${f === x ? "border-ink bg-ink text-white" : "border-ink/20 hover:border-ink/50"}`}
           >
             {x}
           </button>

@@ -114,13 +114,13 @@ export default function Upload() {
           </div>
 
           <label className="block"><span className="eyebrow !text-[0.78rem] text-ink-soft">Instagram-Handle</span>
-            <input value={handle} onChange={(e) => setHandle(e.target.value)} placeholder="@deinhandle" className="mt-2 h-14 w-full rounded-xl border border-line bg-white px-4 text-base outline-none focus:border-ink" /></label>
+            <input value={handle} onChange={(e) => setHandle(e.target.value)} placeholder="@deinhandle" inputMode="text" autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="off" className="mt-2 h-14 w-full text-base rounded-xl border border-line bg-white px-4 text-base outline-none focus:border-ink" /></label>
 
           <div>
             <span className="eyebrow !text-[0.78rem] text-ink-soft">Anlass</span>
             <div className="mt-3 flex flex-wrap gap-2">
               {OCC.map((o) => (
-                <button type="button" key={o} onClick={() => setOcc(o)} className={`eyebrow rounded-full border px-4 py-2.5 !text-[0.78rem] transition-colors ${occ === o ? "border-ink bg-ink text-white" : "border-ink/20"}`}>{o}</button>
+                <button type="button" key={o} onClick={() => setOcc(o)} className={`eyebrow min-h-11 rounded-full border px-4 py-2.5 !text-[0.78rem] transition-colors ${occ === o ? "border-ink bg-ink text-white" : "border-ink/20"}`}>{o}</button>
               ))}
             </div>
           </div>

@@ -9,7 +9,7 @@ import { WA, waLink } from "@/lib/config";
 /** Mobile: dauerhaft sichtbare Bottom-Bar mit Buchen + WhatsApp. */
 export default function StickyBar() {
   const path = usePathname();
-  if (path.startsWith("/buchen") || path.startsWith("/events/anfragen")) return null;
+  if (path.startsWith("/buchen") || path.startsWith("/events/anfragen") || path.startsWith("/gutscheine")) return null;
   const msg = path.includes("event") || path.includes("babyparty") ? WA.events : path.includes("gutschein") ? WA.gutschein : WA.default;
 
   return (
@@ -25,7 +25,7 @@ export default function StickyBar() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Schreib uns auf WhatsApp"
-        className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center rounded-full bg-[#25D366] text-white transition-transform active:scale-95"
+        className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center rounded-full bg-[#25D366] text-ink transition-transform active:scale-95"
       >
         <WhatsAppIcon />
       </a>

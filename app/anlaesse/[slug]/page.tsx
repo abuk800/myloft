@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import CtaBand from "@/components/CtaBand";
-import { Photo, Reveal, TodoTag } from "@/components/shared";
+import { Photo, Reveal } from "@/components/shared";
 import { OCCASIONS, PACKAGES, WA, EVENT, eur } from "@/lib/config";
 
 export function generateStaticParams() {
@@ -45,7 +45,7 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
               {o.points.map((p) => (
                 <li key={p} className="flex items-start gap-4 py-5 text-base">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                  <span>{p.includes("TODO") ? <>{p.replace(/:?\s*TODO.*$/, "")} <TodoTag>TODO</TodoTag></> : p}</span>
+                  <span>{p}</span>
                 </li>
               ))}
             </ul>

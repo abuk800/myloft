@@ -26,6 +26,13 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [path]);
   useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  const close = () => setOpen(false);
+  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
@@ -41,7 +48,7 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto flex h-[4.25rem] max-w-[88rem] items-center justify-between px-5 md:h-20 md:px-10">
-          <Link href="/" aria-label="MYLOFT STUDIO Startseite" className="relative z-[60]">
+          <Link href="/" aria-label="MYLOFT STUDIO Startseite" onClick={close} className="relative z-[60]">
             <Logo light={light || (dark && !open)} />
           </Link>
 
@@ -81,7 +88,10 @@ export default function Header() {
             animate={{ clipPath: "circle(150% at calc(100% - 2.5rem) 2.5rem)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 2.5rem) 2.5rem)" }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="fixed inset-0 z-[55] flex flex-col justify-between bg-paper px-6 pb-10 pt-28 lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menü"
+            className="fixed inset-0 z-[55] flex flex-col justify-between overflow-y-auto overscroll-contain bg-paper px-6 pb-10 pt-28 lg:hidden"
           >
             <nav className="flex flex-col gap-1" aria-label="Mobile Navigation">
               {[{ href: "/", label: "Start" }, ...NAV].map((n, i) => (
@@ -91,15 +101,15 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.06, duration: 0.7, ease: EASE }}
                 >
-                  <Link href={n.href} className="display block border-b border-line py-3 text-[2.6rem]">
+                  <Link href={n.href} onClick={close} className="display block border-b border-line py-3 text-[2.4rem]">
                     {n.label}
                   </Link>
                 </motion.div>
               ))}
             </nav>
             <div className="space-y-4">
-              <Link href="/buchen" className="btn btn-dark w-full">Studio buchen</Link>
-              <Link href="/events/anfragen" className="btn btn-line w-full">Event anfragen</Link>
+              <Link href="/buchen" onClick={close} className="btn btn-dark w-full">Studio buchen</Link>
+              <Link href="/events/anfragen" onClick={close} className="btn btn-line w-full">Event anfragen</Link>
               <p className="pt-2 text-center text-sm text-ink-soft">
                 {SITE.address.street} · {SITE.address.zip} {SITE.address.city}
               </p>

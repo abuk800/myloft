@@ -1,15 +1,12 @@
 import Link from "next/link";
 import Hero from "@/components/home/Hero";
 import Occasions from "@/components/home/Occasions";
-import RoomShowcase from "@/components/home/RoomShowcase";
-import SetExplorer from "@/components/home/SetExplorer";
-import Reels from "@/components/home/Reels";
 import Packages from "@/components/home/Packages";
-import EventTeaser from "@/components/home/EventTeaser";
 import Reviews from "@/components/home/Reviews";
-import CamTeaser from "@/components/home/CamTeaser";
-import InstagramGrid from "@/components/home/InstagramGrid";
+import SetExplorer from "@/components/home/SetExplorer";
+import EventTeaser from "@/components/home/EventTeaser";
 import About from "@/components/home/About";
+import Social from "@/components/home/Social";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import { Reveal } from "@/components/shared";
@@ -20,20 +17,17 @@ export default function Home() {
     <>
       <Hero />
       <Occasions />
-      <RoomShowcase />
-      <SetExplorer />
-      <Reels />
       <Packages compact />
+      <Reviews exclude={["Cia Mehr"]} />
+      <SetExplorer />
       <EventTeaser />
-      <Reviews />
-      <CamTeaser />
-      <InstagramGrid />
       <About />
+      <Social />
 
-      <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 px-5 pb-24 md:px-10 md:pb-36">
-        <h2 className="display text-[2.5rem] md:text-5xl">Häufige Fragen</h2>
-        <Reveal className="mt-10"><Faq items={FAQS.slice(0, 5)} /></Reveal>
-        <p className="mt-8 text-sm text-ink-soft">Noch eine Frage? <Link href="/#kontakt" className="underline underline-offset-4">Schreib uns kurz.</Link></p>
+      <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 px-5 py-12 md:px-10 md:py-24">
+        <h2 className="display text-[2.2rem] md:text-5xl">Häufige Fragen</h2>
+        <Reveal className="mt-6 md:mt-10"><Faq items={FAQS.slice(0, 5)} initialOpen={null} /></Reveal>
+        <p className="mt-6 text-sm text-ink-soft">Noch eine Frage? <Link href="/#kontakt" className="underline underline-offset-4">Schreib uns kurz.</Link></p>
       </section>
 
       <Contact />

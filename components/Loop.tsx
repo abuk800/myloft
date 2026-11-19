@@ -9,8 +9,8 @@ import { VIDEO, type VideoKey } from "@/lib/images";
  * bleibt bei "weniger Bewegung" oder Datensparmodus auf dem Poster und hat einen Play/Pause-Knopf.
  */
 export default function Loop({
-  v, className = "", controls = true, label,
-}: { v: VideoKey; className?: string; controls?: boolean; label?: string }) {
+  v, className = "", controls = true, label, style,
+}: { v: VideoKey; className?: string; controls?: boolean; label?: string; style?: React.CSSProperties }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [blocked, setBlocked] = useState(false);
@@ -23,15 +23,23 @@ export default function Loop({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches || nav.connection?.saveData;
     if (reduce) { setBlocked(true); return; }
 
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) vid.play().then(() => setPlaying(true)).catch(() => setBlocked(true));
-        else { vid.pause(); setPlaying(false); }
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(vid);
-    return () => io.disconnect();
+    // Start erst nach Load + kurzer Pause, damit das Poster (nicht das erste Videobild) der LCP bleibt.
+    let io: IntersectionObserver | undefined;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const start = () => {
+      io = new IntersectionObserver(
+        ([e]) => {
+          if (e.isIntersecting) vid.play().then(() => setPlaying(true)).catch(() => setBlocked(true));
+          else { vid.pause(); setPlaying(false); }
+        },
+        { threshold: 0.35 },
+      );
+      io.observe(vid);
+    };
+    const arm = () => { timer = setTimeout(start, 4000); };
+    if (document.readyState === "complete") arm();
+    else window.addEventListener("load", arm, { once: true });
+    return () => { window.removeEventListener("load", arm); clearTimeout(timer); io?.disconnect(); };
   }, []);
 
   const toggle = () => {
@@ -46,11 +54,12 @@ export default function Loop({
       <video
         ref={ref}
         className="absolute inset-0 h-full w-full object-cover"
+        style={style}
         poster={`${base}.jpg`}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         aria-label={label ?? VIDEO[v].label}
       >
         <source src={`${base}.webm`} type="video/webm" />
