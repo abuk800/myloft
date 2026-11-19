@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import Occasions from "@/components/home/Occasions";
 import RoomShowcase from "@/components/home/RoomShowcase";
 import SetExplorer from "@/components/home/SetExplorer";
+import Reels from "@/components/home/Reels";
 import Packages from "@/components/home/Packages";
 import EventTeaser from "@/components/home/EventTeaser";
 import Reviews from "@/components/home/Reviews";
@@ -21,6 +22,7 @@ export default function Home() {
       <Occasions />
       <RoomShowcase />
       <SetExplorer />
+      <Reels />
       <Packages compact />
       <EventTeaser />
       <Reviews />

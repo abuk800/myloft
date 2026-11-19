@@ -41,13 +41,13 @@ export default function EventTeaser() {
 
         <div className="relative md:col-span-6">
           <motion.div style={{ y: y1 }} className="relative aspect-[4/5] overflow-hidden rounded-2xl md:ml-auto md:w-[80%]">
-            <Photo k="tableWhite" sizes="(min-width:768px) 40vw, 100vw" w={1400} />
+            <Photo k="eventOpening" pos="50% 45%" sizes="(min-width:768px) 40vw, 100vw" w={1400} />
           </motion.div>
           <motion.div
             style={{ y: y2 }}
             className="absolute -bottom-8 left-0 aspect-square w-[46%] overflow-hidden rounded-2xl border-[6px] border-night md:-bottom-14 md:-left-6"
           >
-            <Photo k="tableCandles" sizes="(min-width:768px) 20vw, 46vw" w={800} />
+            <Photo k="eventBirthday" sizes="(min-width:768px) 20vw, 46vw" w={800} />
           </motion.div>
         </div>
       </div>

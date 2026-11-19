@@ -11,7 +11,7 @@ import { SITE } from "@/lib/config";
  * Die Mitte des Fächers ist das größte Bild, daher steht das beste Motiv an Position 4.
  * TODO: automatisch aus dem Profil laden (Instagram Graph API, braucht Zugriffstoken des Studios).
  */
-const FAN: ImgKey[] = ["shotSport", "shotStairs", "shotSofaChair", "hairModel", "shotPregnant", "shotCube", "shotPet"];
+const FAN: ImgKey[] = ["shotSport", "shotStairs", "sofaChair", "hairModel", "pregnantTulle", "cubeModel", "shotPet"];
 
 function useWidth<T extends HTMLElement>() {
   const ref = useRef<T>(null);

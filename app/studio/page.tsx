@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function StudioPage() {
   return (
     <>
-      <PageHero k="studioCyc" eyebrow="Studio mieten" lines={["Dein Studio.", <em key="a">Deine Story.</em>]} sub="Zwei Etagen, Profi-Kamera und Licht inklusive. Slot wählen, buchen, kommen.">
+      <PageHero k="roomLogo" aspect="aspect-[4/3] lg:aspect-[4/5]" pos="42% 50%" eyebrow="Studio mieten" lines={["Dein Studio.", <em key="a">Deine Story.</em>]} sub="Zwei Etagen, Profi-Kamera und Licht inklusive. Slot wählen, buchen, kommen.">
         <Link href="/buchen" className="btn btn-light">Studio buchen</Link>
         <a href="#pakete" className="btn btn-line-light">Preise ansehen</a>
       </PageHero>
@@ -73,7 +73,7 @@ export default function StudioPage() {
         <div className="mt-10"><Faq items={FAQS} /></div>
       </section>
 
-      <CtaBand k="stairsWhite" title={["Such dir", "deinen Slot aus."]} wa={WA.studio} />
+      <CtaBand k="roomCurtain" title={["Such dir", "deinen Slot aus."]} wa={WA.studio} />
     </>
   );
 }

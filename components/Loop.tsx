@@ -1,0 +1,71 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
+import { VIDEO, type VideoKey } from "@/lib/images";
+
+/**
+ * Stummer Video-Loop mit Poster. Startet nur im Sichtbereich, pausiert außerhalb,
+ * bleibt bei "weniger Bewegung" oder Datensparmodus auf dem Poster und hat einen Play/Pause-Knopf.
+ */
+export default function Loop({
+  v, className = "", controls = true, label,
+}: { v: VideoKey; className?: string; controls?: boolean; label?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [blocked, setBlocked] = useState(false);
+  const base = VIDEO[v].base;
+
+  useEffect(() => {
+    const vid = ref.current;
+    if (!vid) return;
+    const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches || nav.connection?.saveData;
+    if (reduce) { setBlocked(true); return; }
+
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) vid.play().then(() => setPlaying(true)).catch(() => setBlocked(true));
+        else { vid.pause(); setPlaying(false); }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(vid);
+    return () => io.disconnect();
+  }, []);
+
+  const toggle = () => {
+    const vid = ref.current;
+    if (!vid) return;
+    if (vid.paused) { vid.play().then(() => { setPlaying(true); setBlocked(false); }).catch(() => {}); }
+    else { vid.pause(); setPlaying(false); }
+  };
+
+  return (
+    <div className={`relative ${className}`}>
+      <video
+        ref={ref}
+        className="absolute inset-0 h-full w-full object-cover"
+        poster={`${base}.jpg`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={label ?? VIDEO[v].label}
+      >
+        <source src={`${base}.webm`} type="video/webm" />
+        <source src={`${base}.mp4`} type="video/mp4" />
+      </video>
+      {controls && (
+        <button
+          onClick={toggle}
+          aria-label={playing ? "Video pausieren" : "Video abspielen"}
+          className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-black/55 text-white transition-opacity hover:bg-black/75"
+          style={{ opacity: blocked || !playing ? 1 : 0.85 }}
+        >
+          {playing ? <Pause className="h-4 w-4 fill-current" /> : <Play className="h-4 w-4 fill-current" />}
+        </button>
+      )}
+    </div>
+  );
+}

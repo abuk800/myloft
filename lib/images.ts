@@ -1,112 +1,66 @@
 /**
- * Zentrale Bildverwaltung.
- * Echte Studiofotos liegen in public/studio, der Rest sind Unsplash-Platzhalter (Schlüssel ph…).
- * Zum Austausch: nur die Werte hier ändern
- * (entweder eine Unsplash-ID oder eine komplette https-URL / lokaler Pfad wie "/studio/treppe.jpg").
+ * Zentrale Bildverwaltung. Alle Bilder liegen lokal in public/studio (echte Aufnahmen aus dem Studio).
+ * Zum Austausch: Datei ersetzen oder den Pfad hier ändern.
+ * Reihenfolge innerhalb der Gruppen = Qualitäts-Rang (siehe docs/bilder-ranking.md).
  */
 
 export type Img = { id: string; alt: string };
 
-const UNSPLASH = "https://images.unsplash.com/photo-";
-
-/** Baut aus einer Unsplash-ID oder einer fertigen URL/Pfad die finale Bild-URL. */
-export function src(img: Img | string, w = 1200): string {
-  const id = typeof img === "string" ? img : img.id;
-  if (id.startsWith("http") || id.startsWith("/")) return id;
-  return `${UNSPLASH}${id}?auto=format&fit=crop&w=${w}&q=75`;
+/** Liefert die Bild-URL (lokaler Pfad oder komplette URL). */
+export function src(img: Img | string, _w = 1200): string {
+  void _w;
+  return typeof img === "string" ? img : img.id;
 }
 
 export const IMG = {
-  // ── Echte Studiofotos, hohe Auflösung (public/studio), nach Qualität sortiert ──
-  roomLogo: { id: "/studio/raum-logo-weihnachten.jpg", alt: "MYLOFT STUDIO: Logo-Wand, Weihnachtsbaum, rote Vorhänge, Bouclé-Sofas und weißes Set mit Softbox" },
+  // ── Raum (1600×1200) ───────────────────────────────────
+  roomLogo: { id: "/studio/raum-logo-weihnachten.jpg", alt: "MYLOFT STUDIO: Logo-Wand, Weihnachtsbaum, roter Vorhang, Bouclé-Sofas und weißes Set mit Softbox" },
   roomCurtain: { id: "/studio/raum-roter-vorhang.jpg", alt: "Weihnachts-Set mit rotem Vorhang, Baum und Bouclé-Sofas vor der MYLOFT-Logo-Wand" },
   roomTree: { id: "/studio/raum-baum-vordergrund.jpg", alt: "Studio-Halle mit Weihnachtsbaum, Empore, Sofa-Ecke und Studiolicht" },
   roomMezzanine: { id: "/studio/raum-empore-sofas.jpg", alt: "Blick in die Studio-Halle mit Empore, Weihnachts-Set und Sofa-Ecke" },
   roomSoftbox: { id: "/studio/raum-softbox-sofas.jpg", alt: "Studio mit Softbox, Bouclé-Sofa und weißem Hohlkehlen-Set" },
-  familyWall: { id: "/studio/familie-logo-wand.jpg", alt: "Familie sitzt auf den cremefarbenen Bouclé-Sofas vor der MYLOFT-STUDIO-Wand" },
-  hairModel: { id: "/studio/produkt-haarmarke-model.jpg", alt: "Produkt-Shooting: Model neben Kleiderständer mit Haarverlängerungen vor grauem Hintergrund" },
-  btsSoftbox: { id: "/studio/bts-softbox-weisses-set.jpg", alt: "Behind the Scenes: Shooting auf dem weißen Set mit Softbox und Monitor" },
-  hairSofa: { id: "/studio/produkt-haare-boucle-sofa.jpg", alt: "Vier glatte Haarsträhnen über der Lehne eines cremefarbenen Bouclé-Sofas" },
-  kidCube: { id: "/studio/kind-auf-wuerfel-weisses-set.jpg", alt: "Kinder-Shooting auf weißem Würfel vor der Hohlkehle, Fotograf im Vordergrund" },
-  meteGimbal: { id: "/studio/mete.jpg", alt: "Mete, Inhaber von MYLOFT STUDIO, mit Kamera-Gimbal" },
+  roomSofa: { id: "/studio/raum-sofa-ecke.jpg", alt: "Sofa-Ecke aus cremefarbenen Bouclé-Sofas mit Couchtisch" },
 
-  // ── Echte Shootings (kleine Screenshots, nur für kleine Kacheln) ──
-  shotStairs: { id: "/studio/shots/treppe-gelaender.jpg", alt: "Model auf der offenen Treppe mit Metallgeländer im Studio" },
-  shotCube: { id: "/studio/shots/wuerfel-spotlight.jpg", alt: "Model auf weißem Würfel im Spotlight" },
-  shotSofaChair: { id: "/studio/shots/sofa-sessel.jpg", alt: "Frau sitzt auf dem cremefarbenen Sessel vor weißem Hintergrund" },
-  shotPregnant: { id: "/studio/shots/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid" },
-  shotPet: { id: "/studio/shots/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
-  shotBW: { id: "/studio/shots/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
-  shotSport: { id: "/studio/shots/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
+  // ── Events ─────────────────────────────────────────────
+  eventOpening: { id: "/studio/event-opening-kerzen.jpg", alt: "Opening-Event: lilafarbene Ballons, weiße Rundbögen und lange Tafeln mit Kerzen und Chiavari-Stühlen" },
+  eventBirthday: { id: "/studio/event-geburtstag-tafel.jpg", alt: "Kindergeburtstag: lange weiße Tafel mit rosa Tischläufer, Ballons und Chiavari-Stühlen" },
+  eventPaint: { id: "/studio/event-mal-workshop.jpg", alt: "Lange Tafel mit Malpaletten, Tüten und Chiavari-Stühlen bei einem Workshop" },
   shotMasterclass: { id: "/studio/shots/masterclass-gruppe.jpg", alt: "Gruppenfoto bei der Make-up-Masterclass im Studio" },
   shotChairs: { id: "/studio/shots/chiavari-stuehle.jpg", alt: "Weiße Chiavari-Stühle an gedeckter Tafel beim Workshop" },
 
-  // ── Platzhalter mit Stimmung der echten Studiofotos ─────
-  // (echte Fotos später hier eintragen, z. B. "/studio/treppe.jpg")
-  phStairs: { id: "1761164920810-25031499d736", alt: "Frau im schwarzen Kleid sitzt auf Treppe mit Geländer" },
-  phCube: { id: "1718251801071-25bdb8eb15e1", alt: "Model kniet vor dunkler Studiokulisse mit Lichtstativen" },
-  phSofa: { id: "1634149135349-d03e6f9bfedc", alt: "Frau sitzt auf cremefarbenem Sessel vor hellem Hintergrund" },
-  phPregnant: { id: "1739357367818-941fced00329", alt: "Schwangere im rosa Tüllkleid beim Babybauch-Shooting" },
-  phPet: { id: "1685169053427-441ac5dced74", alt: "Hund auf weißem Studioboden" },
-  phBW: { id: "1768818680860-c4abbb46eb79", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
-  phSport: { id: "1774813958520-b0ff8d830c13", alt: "Sport-Shooting vor weißem Hintergrund" },
-  phCreator: { id: "1548680307-4654426bf6c7", alt: "Videograf mit Kamera-Gimbal (Platzhalter, Foto von Mete folgt)" },
-  phWorkshop: { id: "1731848358154-52ebc3c4d590", alt: "Gruppe von Frauen beim Workshop-Gruppenfoto" },
-  phChairs: { id: "1782026456568-b2aaa170487b", alt: "Weiße Chiavari-Stühle mit Tüll bei einer Feier" },
+  // ── Shootings ──────────────────────────────────────────
+  pregnantTulle: { id: "/studio/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid vor hellem Hintergrund" },
+  cubeModel: { id: "/studio/model-weisse-wuerfel.jpg", alt: "Model liegt auf weißen Würfeln vor der Hohlkehle" },
+  sofaChair: { id: "/studio/sofa-sessel.jpg", alt: "Frau sitzt lachend auf dem cremefarbenen Bouclé-Sessel vor weißem Hintergrund" },
+  hairModel: { id: "/studio/produkt-haarmarke-model.jpg", alt: "Produkt-Shooting: Model neben Kleiderständer mit Haarverlängerungen vor grauem Hintergrund" },
+  hairSofa: { id: "/studio/produkt-haare-boucle-sofa.jpg", alt: "Vier glatte Haarsträhnen über der Lehne eines cremefarbenen Bouclé-Sofas" },
+  familyWall: { id: "/studio/familie-logo-wand.jpg", alt: "Familie sitzt auf den cremefarbenen Bouclé-Sofas vor der MYLOFT-STUDIO-Wand" },
+  btsSoftbox: { id: "/studio/bts-softbox-weisses-set.jpg", alt: "Behind the Scenes: Shooting auf dem weißen Set mit Softbox und Monitor" },
+  kidCube: { id: "/studio/kind-auf-wuerfel-weisses-set.jpg", alt: "Kinder-Shooting auf weißem Würfel vor der Hohlkehle, Fotograf im Vordergrund" },
+  shotStairs: { id: "/studio/treppe-gelaender-hd.jpg", alt: "Model sitzt auf der offenen Treppe mit Metallgeländer im Studio" },
+  shotSport: { id: "/studio/shots/sport.jpg", alt: "Sport-Shooting vor hellem Hintergrund" },
+  shotPet: { id: "/studio/shots/white-set-dog.jpg", alt: "Shooting mit Dackel auf dem weißen Set" },
+  shotBW: { id: "/studio/shots/portrait-bw.jpg", alt: "Schwarz-Weiß-Portrait mit dramatischem Licht" },
+  shotCube: { id: "/studio/shots/wuerfel-spotlight.jpg", alt: "Model auf weißem Würfel im Spotlight" },
+  shotPregnant: { id: "/studio/shots/schwanger-tuell.jpg", alt: "Babybauch-Shooting im rosa Tüllkleid" },
+  meteGimbal: { id: "/studio/mete.jpg", alt: "Mete, Inhaber von MYLOFT STUDIO, mit Kamera-Gimbal" },
 
-  // ── Raum ───────────────────────────────────────────────
-  sofaLounge: { id: "1784653548770-23c8f9022c4c", alt: "Heller Loft-Raum mit cremefarbenen Sofas" },
-  sofaLounge2: { id: "1784653548946-e7444b1d12d7", alt: "Cremefarbene Sofa-Ecke mit Marmortisch" },
-  brightRoom: { id: "1633505899118-4ca6bd143043", alt: "Helles Wohnzimmer mit großen Fenstern" },
-  brightRoom2: { id: "1788396408394-b8e46d19272c", alt: "Heller Raum mit Sofas und Sesseln" },
-  whiteHall: { id: "1771371097061-3befd4b71b59", alt: "Großer weißer Saal mit Sofas" },
-  stairsWhite: { id: "1776673449578-69107b0b9cb1", alt: "Weiße Treppe mit Laterne und Trockenblumen" },
-  stairsSpiral: { id: "1711294545067-5693f948bc7b", alt: "Weiße Treppe mit sanfter Rundung" },
-  stairsModern: { id: "1775644729932-96c35567f9ed", alt: "Moderne helle Treppe" },
-  archWall: { id: "1786325492063-8967ed6ad88d", alt: "Studio mit Cremewand und Regiestuhl" },
-
-  // ── Studio / Technik ───────────────────────────────────
-  studioCyc: { id: "1471341971476-ae15ff5dd4ea", alt: "Weißes Fotostudio mit Softboxen und Studioblitzen" },
-  studioSoftbox: { id: "1527011046414-4781f1f94f8c", alt: "Softbox neben Zimmerpflanzen im Studio" },
-  studioShoot: { id: "1758613655304-48776efb25d8", alt: "Fotograf bei einem Shooting im Studio" },
-  studioModel: { id: "1768818928341-3b31b8965c6d", alt: "Weißes Studio mit Dauerlicht" },
-  studioLight: { id: "1763365894901-675a14ca8888", alt: "Dauerlicht im Studio" },
-  cameraRig: { id: "1612548403247-aa2873e9422d", alt: "Profikamera mit Zoomobjektiv auf Stativ" },
-  cameraBlue: { id: "1759393852314-59dc00faeed3", alt: "Content Creatorin filmt sich mit Smartphone und Stativ" },
-
-  // ── Events / Tafel ─────────────────────────────────────
-  tableWhite: { id: "1767070805821-60c701885151", alt: "Lange festlich gedeckte Tafel mit weißen Stühlen" },
-  tableLong: { id: "1641834948278-449f060477fa", alt: "Lange Tafel, festlich eingedeckt" },
-  tableCandles: { id: "1606659894125-40824878b6ce", alt: "Kerzenlicht auf einer Esstafel" },
-  tableFlowers: { id: "1764161961082-dee05fcb731c", alt: "Lange Tafel mit Blumen und Früchten" },
-  tableDetail: { id: "1767070806645-b0d595fa2c6a", alt: "Festlich gedeckter Tisch im Detail" },
-  christmas: { id: "1543752330-bf0c7055f5bc", alt: "Weihnachtsbaum mit roten Kugeln und Lichtern" },
-  christmasRed: { id: "1607184231297-2132ea7183d4", alt: "Roter Weihnachtsschmuck am Baum" },
-
-  // ── Menschen / Anlässe ─────────────────────────────────
-  portraitA: { id: "1770058443069-e384cd001e9b", alt: "Portrait vor hellem Hintergrund" },
-  portraitB: { id: "1636153279424-cb5d1e00f5a2", alt: "Portrait einer Frau vor heller Wand" },
-  portraitC: { id: "1582896911227-c966f6e7fb93", alt: "Portrait mit Blazer vor weißem Hintergrund" },
-  portraitD: { id: "1695757002354-8bca71d087c7", alt: "Lächelndes Portrait vor weißem Hintergrund" },
-  portraitE: { id: "1610659523060-816c02b94529", alt: "Lächelnde Frau im Studio" },
-  portraitF: { id: "1645310371632-bec11db1971d", alt: "Frau vor weißer Wand" },
-  portraitBW: { id: "1770862848042-b83c5381a679", alt: "Schwarz-Weiß-Portrait" },
-  pregnancyA: { id: "1711313530954-39421910bc82", alt: "Schwangere hält ihren Babybauch" },
-  pregnancyB: { id: "1711313533154-7dda5b155f88", alt: "Babybauch im weißen Pullover" },
-  pregnancyC: { id: "1711313528753-616a2213c3f9", alt: "Schwangere lugt hinter einer Wand hervor" },
-  pregnancyDark: { id: "1489674297774-eadf82cba14c", alt: "Babybauch-Portrait im Seitenlicht" },
-  podcastA: { id: "1782274265689-4f10a91d4abb", alt: "Podcast-Setup mit zwei Mikrofonen" },
-  podcastB: { id: "1559523161-0fc0d8b38a7a", alt: "Zwei Personen nehmen einen Podcast auf" },
-  podcastC: { id: "1780642208543-7a84b61f13ca", alt: "Content-Setup mit Sofa und Licht" },
-  micDark: { id: "1478737270239-2f02b77fc618", alt: "Studiomikrofon im Detail" },
-  babyshower: { id: "1788462810835-7a36a2402dc4", alt: "Ballonbogen bei einer Babyparty" },
-  babyLetters: { id: "1768776183122-95c7d3adbf3e", alt: "Beleuchtete BABY-Buchstaben" },
-  babyArch: { id: "1788462811028-14d4e80bf6de", alt: "Ballonbogen in Rosa und Blau" },
-  friendsLaugh: { id: "1681641095463-b4d3693a0ee3", alt: "Freundinnen lachen gemeinsam" },
-  friendsParty: { id: "1511988617509-a57c8a288659", alt: "Gruppe lacht zusammen" },
-  friendsCheers: { id: "1485872299829-c673f5194813", alt: "Zwei Freundinnen stoßen an" },
-  friendsFun: { id: "1681641088246-b3e60e203ad1", alt: "Gruppe von Freundinnen am Tisch" },
-  friendsFood: { id: "1671116810331-894618e447b8", alt: "Freunde teilen Essen am Tisch" },
+  // ── Standbilder aus den Reels (klein, nur für Kacheln) ──
+  stillDuo: { id: "/studio/still-duo-pink.jpg", alt: "Zwei Freundinnen tanzen vor pinkem Hintergrund im Studio" },
+  stillLila: { id: "/studio/still-lila-softbox.jpg", alt: "Fotoshooting vor lila Hintergrund mit großer Softbox" },
+  stillWeiss: { id: "/studio/still-weisses-set.jpg", alt: "Fotografin und Model auf dem weißen Set mit Regiestuhl" },
+  stillKinder: { id: "/studio/still-kinderparty.jpg", alt: "Dekoration mit Ballons und Zielflaggen bei einem Kindergeburtstag" },
+  stillMic: { id: "/studio/still-mic-creator.jpg", alt: "Creatorin mit Mikrofon und Kamera im Studio" },
 } satisfies Record<string, Img>;
 
 export type ImgKey = keyof typeof IMG;
+
+/** Video-Loops (public/video): jeweils MP4 + WebM + Poster. */
+export const VIDEO = {
+  hero: { base: "/video/hero-farben", label: "Farbige Hintergründe" },
+  shooting: { base: "/video/reel-shooting", label: "Shooting auf dem weißen Set" },
+  farben: { base: "/video/reel-farben", label: "Farbige Hintergründe" },
+  geburtstag: { base: "/video/reel-geburtstag", label: "Kindergeburtstag im Loft" },
+  setup: { base: "/video/reel-setup", label: "Setup und Equipment" },
+} as const;
+export type VideoKey = keyof typeof VIDEO;

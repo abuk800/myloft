@@ -30,7 +30,7 @@ export default async function OccasionPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <PageHero k={o.image} eyebrow={o.title} lines={o.headline.split(". ").map((s, i, a) => (i < a.length - 1 && !s.endsWith(".") ? `${s}.` : s))} sub={o.short}>
+      <PageHero k={o.image} pos={o.pos} eyebrow={o.title} lines={o.headline.split(". ").map((s, i, a) => (i < a.length - 1 && !s.endsWith(".") ? `${s}.` : s))} sub={o.short}>
         <Link href={cta.href} className="btn btn-light">{cta.label}</Link>
         <Link href={isEvent ? "/buchen" : "/events/anfragen"} className="btn btn-line-light">{isEvent ? "Oder Studio buchen" : "Oder Event anfragen"}</Link>
       </PageHero>

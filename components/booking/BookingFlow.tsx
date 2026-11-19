@@ -265,7 +265,7 @@ export default function BookingFlow() {
         {/* Zusammenfassung Desktop */}
         <aside className="hidden md:col-span-5 md:block">
           <div className="sticky top-28 overflow-hidden rounded-2xl bg-cream/70">
-            <div className="relative aspect-[16/10]"><Photo k="studioCyc" sizes="40vw" w={900} /></div>
+            <div className="relative aspect-[16/10]"><Photo k="roomSoftbox" sizes="40vw" w={900} /></div>
             <div className="p-7">
               <p className="eyebrow !text-[0.78rem] text-ink-soft">Deine Buchung</p>
               <dl className="mt-5 space-y-3 text-sm">

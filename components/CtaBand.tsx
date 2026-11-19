@@ -7,7 +7,7 @@ import type { ImgKey } from "@/lib/images";
 
 /** Abschluss-Handlung am Ende einer Seite, nie eine Sackgasse. */
 export default function CtaBand({
-  k = "sofaLounge", title = ["Bereit für", "dein Studio?"], primary = { href: "/buchen", label: "Studio buchen" },
+  k = "roomLogo", title = ["Bereit für", "dein Studio?"], primary = { href: "/buchen", label: "Studio buchen" },
   secondary = { href: "/events/anfragen", label: "Event anfragen" }, wa = WA.default,
 }: {
   k?: ImgKey; title?: string[]; primary?: { href: string; label: string }; secondary?: { href: string; label: string }; wa?: string;

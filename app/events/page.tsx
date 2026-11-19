@@ -20,7 +20,7 @@ const STEPS = [
 export default function EventsPage() {
   return (
     <div className="bg-night text-white">
-      <PageHero k="tableWhite" eyebrow="Eventlocation" lines={["Feiern, wo", <em key="a">andere shooten.</em>]} sub="Zwei Etagen, festliche Tafel und Küche. Alles steht, du bringst nur die Gäste mit.">
+      <PageHero k="eventOpening" pos="50% 40%" eyebrow="Eventlocation" lines={["Feiern, wo", <em key="a">andere shooten.</em>]} sub="Zwei Etagen, festliche Tafel und Küche. Alles steht, du bringst nur die Gäste mit.">
         <Link href="/events/anfragen" className="btn btn-gold">Termin anfragen</Link>
         <a href="#ausstattung" className="btn btn-line-light">Ausstattung</a>
       </PageHero>
@@ -61,10 +61,10 @@ export default function EventsPage() {
 
       <section className="mx-auto max-w-[88rem] px-5 pb-24 md:px-10 md:pb-36">
         <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-5">
-          <Reveal className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl"><Photo k="tableLong" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
-          <Reveal delay={0.1} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="tableCandles" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
-          <Reveal delay={0.15} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl"><Photo k="babyshower" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
-          <Reveal delay={0.2} className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="phChairs" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
+          <Reveal className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl"><Photo k="eventBirthday" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
+          <Reveal delay={0.1} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="eventPaint" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
+          <Reveal delay={0.15} className="md:col-span-5"><div className="zoom relative aspect-[4/5] overflow-hidden rounded-2xl"><Photo k="roomCurtain" sizes="(min-width:768px) 40vw, 50vw" w={1000} /></div></Reveal>
+          <Reveal delay={0.2} className="col-span-2 md:col-span-7"><div className="zoom relative aspect-[16/11] overflow-hidden rounded-2xl md:h-full md:aspect-auto"><Photo k="roomMezzanine" sizes="(min-width:768px) 58vw, 100vw" w={1600} /></div></Reveal>
         </div>
       </section>
 
@@ -101,7 +101,7 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <CtaBand k="tableCandles" title={["Dein Fest", "im Loft."]} primary={{ href: "/events/anfragen", label: "Termin anfragen" }} secondary={{ href: "/buchen", label: "Studio buchen" }} wa={WA.events} />
+      <CtaBand k="eventBirthday" title={["Dein Fest", "im Loft."]} primary={{ href: "/events/anfragen", label: "Termin anfragen" }} secondary={{ href: "/buchen", label: "Studio buchen" }} wa={WA.events} />
     </div>
   );
 }

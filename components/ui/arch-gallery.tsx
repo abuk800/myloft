@@ -25,19 +25,16 @@ export type ArchGalleryProps = {
 };
 
 // ---------------------------------------------------------------------------
-// Defaults (Unsplash-Platzhalter, alle IDs geprüft)
+// Defaults (lokale Studiofotos)
 // ---------------------------------------------------------------------------
-const u = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&q=75`;
-
 const DEFAULT_ITEMS: GalleryItem[] = [
-  { image: { src: u('1784653548770-23c8f9022c4c'), alt: 'Bright loft with cream sofas' } },
-  { image: { src: u('1771371097061-3befd4b71b59'), alt: 'Large white hall with sofas' } },
-  { image: { src: u('1776673449578-69107b0b9cb1'), alt: 'White staircase with lantern' } },
-  { image: { src: u('1471341971476-ae15ff5dd4ea'), alt: 'Photo studio with softboxes' } },
-  { image: { src: u('1767070805821-60c701885151'), alt: 'Long table with white chairs' } },
-  { image: { src: u('1789381565507-c95875c82157'), alt: 'Grey modular sofa in a bright room' } },
-  { image: { src: u('1543752330-bf0c7055f5bc'), alt: 'Christmas tree with red baubles' } },
+  { image: { src: '/studio/sofa-sessel.jpg', alt: 'Cream boucle armchair on a white set' } },
+  { image: { src: '/studio/model-weisse-wuerfel.jpg', alt: 'Model lying on white cubes' } },
+  { image: { src: '/studio/schwanger-tuell.jpg', alt: 'Maternity shoot in a pink tulle gown' } },
+  { image: { src: '/studio/produkt-haarmarke-model.jpg', alt: 'Product shoot with a clothing rail' } },
+  { image: { src: '/studio/treppe-gelaender-hd.jpg', alt: 'Model on the open staircase' } },
+  { image: { src: '/studio/event-opening-kerzen.jpg', alt: 'Opening event with balloons and candlelit tables' } },
+  { image: { src: '/studio/familie-logo-wand.jpg', alt: 'Family on cream sofas below the studio logo' } },
 ];
 
 const ROTATE_STEP = 6;
