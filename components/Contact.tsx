@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock, MapPin, Phone } from "lucide-react";
-import { Lines, Reveal, WhatsAppIcon } from "./ui";
+import { Lines, Reveal, WhatsAppIcon } from "./shared";
 import { SITE, WA, waLink } from "@/lib/config";
 
 export default function Contact({ waMessage = WA.default }: { waMessage?: string }) {

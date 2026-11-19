@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { Photo, Lines, EASE, Stars } from "../ui";
+import { Photo, Lines, EASE, Stars } from "../shared";
 import { SITE } from "@/lib/config";
 import type { ImgKey } from "@/lib/images";
 

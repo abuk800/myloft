@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { EASE } from "./ui";
+import { EASE } from "./shared";
 
 /** Fortschrittsanzeige + animierter Schrittwechsel für Buchung und Event-Anfrage. */
 export function StepHeader({ steps, current, onBack, dark = false }: { steps: string[]; current: number; onBack?: () => void; dark?: boolean }) {

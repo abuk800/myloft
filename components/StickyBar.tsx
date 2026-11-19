@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { WhatsAppIcon, EASE } from "./ui";
+import { WhatsAppIcon, EASE } from "./shared";
 import { WA, waLink } from "@/lib/config";
 
 /** Mobile: dauerhaft sichtbare Bottom-Bar mit Buchen + WhatsApp. */

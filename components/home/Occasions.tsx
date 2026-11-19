@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Lines, Photo, Reveal } from "../ui";
+import { Lines, Photo, Reveal } from "../shared";
 import { OCCASIONS } from "@/lib/config";
 
 export default function Occasions() {

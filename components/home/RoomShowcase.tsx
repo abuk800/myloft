@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lines, Photo, Reveal, ArrowLink } from "../ui";
+import { Lines, Photo, Reveal, ArrowLink } from "../shared";
 
 /** Echte Aufnahmen der Halle, ohne Overlay, damit der Raum für sich spricht. */
 export default function RoomShowcase() {
@@ -14,7 +14,7 @@ export default function RoomShowcase() {
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">
               Helle Halle mit Empore, weißem Set, Softboxen und Sofa-Ecke. Dazu wechselnde Sets, gerade steht das Weihnachts-Set mit Baum und rotem Vorhang. Alles echte Aufnahmen aus dem Studio.
             </p>
-            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
               <Link href="/buchen" className="btn btn-dark">Studio buchen</Link>
               <ArrowLink href="/studio">Studio im Detail</ArrowLink>
             </div>

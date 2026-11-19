@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lines, Photo, Reveal } from "../ui";
+import { Lines, Photo, Reveal } from "../shared";
 import { SITE } from "@/lib/config";
 
 export default function About() {

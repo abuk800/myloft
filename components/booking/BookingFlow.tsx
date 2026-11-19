@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Minus, Plus } from "lucide-react";
 import { StepBody, StepHeader } from "../Stepper";
-import { EASE, Photo, WhatsAppIcon, TodoTag } from "../ui";
+import { EASE, Photo, WhatsAppIcon, TodoTag } from "../shared";
 import { EXTRAS, PACKAGES, SITE, eur, waLink, type Pkg } from "@/lib/config";
 
 const STEPS = ["Paket", "Termin", "Personen", "Extras", "Bestätigung"];

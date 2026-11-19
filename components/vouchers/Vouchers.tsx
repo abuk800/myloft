@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Gift } from "lucide-react";
-import { EASE, Logo } from "../ui";
+import { EASE, Logo } from "../shared";
 import { PACKAGES, SITE, VOUCHER_VALUES, WA, eur, waLink } from "@/lib/config";
 
 type Kind = "wert" | "paket";

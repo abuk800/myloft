@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo, InstagramIcon, WhatsAppIcon } from "./ui";
+import { Logo, InstagramIcon, WhatsAppIcon } from "./shared";
 import { SITE, WA, waLink } from "@/lib/config";
 
 export default function Footer() {

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Logo, EASE } from "./ui";
+import { Logo, EASE } from "./shared";
 import { NAV, SITE } from "@/lib/config";
 
 // Seiten mit vollflächigem Hero: Header startet transparent mit heller Schrift

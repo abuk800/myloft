@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lines, Photo, Reveal, WhatsAppIcon } from "./ui";
+import { Lines, Photo, Reveal, WhatsAppIcon } from "./shared";
 import { WA, waLink } from "@/lib/config";
 import type { ImgKey } from "@/lib/images";
 

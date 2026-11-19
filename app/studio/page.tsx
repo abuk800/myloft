@@ -7,7 +7,7 @@ import Packages from "@/components/home/Packages";
 import Reviews from "@/components/home/Reviews";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
-import { Ico, Reveal, TodoTag } from "@/components/ui";
+import { Ico, Reveal, TodoTag } from "@/components/shared";
 import { FAQS, INCLUDED, EXTRAS, WA } from "@/lib/config";
 
 export const metadata: Metadata = {

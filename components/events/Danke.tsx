@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { EASE, TodoTag, WhatsAppIcon } from "../ui";
+import { EASE, TodoTag, WhatsAppIcon } from "../shared";
 import { WA, waLink } from "@/lib/config";
 
 export default function Danke() {

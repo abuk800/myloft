@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Lines, Photo, EASE } from "./ui";
+import { Lines, Photo, EASE } from "./shared";
 import type { ImgKey } from "@/lib/images";
 
 export default function PageHero({

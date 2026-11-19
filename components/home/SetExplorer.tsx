@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Lines, Photo, EASE, ArrowLink } from "../ui";
+import { Lines, Photo, EASE, ArrowLink } from "../shared";
 import { SETS } from "@/lib/config";
 
 export default function SetExplorer() {
@@ -95,7 +95,7 @@ export default function SetExplorer() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
               <Link href="/buchen" className="btn btn-dark">Dieses Set shooten</Link>
               <ArrowLink href="/studio">Alle Details</ArrowLink>
             </div>

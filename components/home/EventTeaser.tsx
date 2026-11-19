@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Ico, Lines, Photo, Reveal, TodoTag } from "../ui";
+import { Ico, Lines, Photo, Reveal, TodoTag } from "../shared";
 import { EVENT } from "@/lib/config";
 
 export default function EventTeaser() {

@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import CtaBand from "@/components/CtaBand";
-import { Photo, Reveal, TodoTag } from "@/components/ui";
+import { Photo, Reveal, TodoTag } from "@/components/shared";
 import { OCCASIONS, PACKAGES, WA, EVENT, eur } from "@/lib/config";
 
 export function generateStaticParams() {

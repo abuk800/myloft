@@ -1,6 +1,6 @@
 "use client";
 
-import { GoogleG, Lines, Reveal, Stars } from "../ui";
+import { GoogleG, Lines, Reveal, Stars } from "../shared";
 import { REVIEWS, SITE } from "@/lib/config";
 
 export default function Reviews() {

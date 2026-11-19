@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { Ico, Lines, Reveal, TodoTag } from "../ui";
+import { Ico, Lines, Reveal, TodoTag } from "../shared";
 import { INCLUDED, PACKAGES, WEEKDAY, eur } from "@/lib/config";
 
 export default function Packages({ compact = false }: { compact?: boolean }) {

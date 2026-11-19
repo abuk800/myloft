@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lines, Photo, Reveal, ArrowLink } from "../ui";
+import { Lines, Photo, Reveal, ArrowLink } from "../shared";
 import { CAM_ITEMS } from "@/lib/cam";
 import { SITE } from "@/lib/config";
 
@@ -17,7 +17,7 @@ export default function CamTeaser() {
               Im Studio hängen QR-Codes. Scan, hochladen, fertig: Deine Lieblingsbilder landen (nach Freigabe) hier, mit deinem @Handle. Mehr Reichweite für dich, echter Content für uns.
             </p>
             <p className="mt-4 text-sm text-ink-soft">Oder poste mit <strong className="font-medium text-ink">{SITE.hashtag}</strong>.</p>
-            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
               <Link href="/galerie" className="btn btn-dark">Zur Galerie</Link>
               <ArrowLink href="/galerie/upload">Bilder hochladen</ArrowLink>
             </div>

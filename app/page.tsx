@@ -11,7 +11,7 @@ import InstagramGrid from "@/components/home/InstagramGrid";
 import About from "@/components/home/About";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
-import { Reveal } from "@/components/ui";
+import { Reveal } from "@/components/shared";
 import { FAQS } from "@/lib/config";
 
 export default function Home() {

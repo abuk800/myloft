@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { StepBody, StepHeader } from "../Stepper";
-import { EASE, TodoTag } from "../ui";
+import { EASE, TodoTag } from "../shared";
 import { EVENT_EXTRAS, EVENT_OCCASIONS, MAX_GUESTS } from "@/lib/config";
 
 const STEPS = ["Anlass", "Datum", "Gäste", "Extras", "Kontakt"];

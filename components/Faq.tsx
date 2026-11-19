@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { EASE } from "./ui";
+import { EASE } from "./shared";
 
 export default function Faq({ items, dark = false }: { items: { q: string; a: string }[]; dark?: boolean }) {
   const [open, setOpen] = useState<number | null>(0);

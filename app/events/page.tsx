@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
-import { Ico, Photo, Reveal, TodoTag } from "@/components/ui";
+import { Ico, Photo, Reveal, TodoTag } from "@/components/shared";
 import { EVENT, OCCASIONS, WA } from "@/lib/config";
 
 export const metadata: Metadata = {
